@@ -1,0 +1,407 @@
+# Apache Flink Agents — Workflow vs ReAct
+
+<p align="center">
+  <img src="../assets/branding/Ratatoskr_title_image.png" alt="Ratatoskr — wood-textured wordmark and squirrel mascot" width="400" />
+</p>
+
+A practical review of the two agent paradigms in [Apache Flink Agents](https://github.com/apache/flink-agents) (release 0.3), with diagrams and guidance from the **Ratatoskr** workspace (including the [honeypot](../honeypot/README.md) reference pipeline).
+
+**Related docs**
+
+- [PLATFORM.md](PLATFORM.md) — generic platform: CLI, Control API, example agents
+- [DEPLOYMENT_SCENARIOS.md](DEPLOYMENT_SCENARIOS.md) — Docker lab vs CDP Base / Knox VIP
+- [honeypot/docs/PRODUCTION_ARCHITECTURE.md](../honeypot/docs/PRODUCTION_ARCHITECTURE.md) — hot path vs enrichment in production
+- [honeypot/README.md](../honeypot/README.md) — optional Cowrie end-to-end demo
+- [Flink Agents 0.3 docs](https://nightlies.apache.org/flink/flink-agents-docs-release-0.3/) — upstream API reference
+
+---
+
+## What is Apache Flink?
+
+If you are new to the ecosystem: **[Apache Flink](https://flink.apache.org/)** is a distributed system for processing **streams of events** (and also batch data). Typical jobs:
+
+- read continuously from **Kafka** (or other sources),
+- maintain **state** per key (e.g. session, counter, last offset),
+- apply windows, joins, and CEP-style logic,
+- write results to sinks (Kafka, databases, files).
+
+**Why teams use Flink**
+
+| Capability | Why it matters |
+|------------|----------------|
+| Low-latency streaming | React to events as they arrive, not in nightly batches |
+| Exactly-once / checkpointing | Recover from failures without corrupting state |
+| Horizontal scale | Add TaskManagers as volume grows |
+| Unified batch + stream | Same APIs for historical and live data |
+
+On Cloudera platforms, Flink often sits beside **Kafka** (transport) and **NiFi / CDF** (integration flows). Flink is the **compute** layer for continuous analytics and automation.
+
+### What Flink Agents adds to Flink
+
+Apache Flink already excels at stateful stream processing. **Flink Agents** layers an agent programming model on top: you define an `Agent` with **`@action`** handlers (event-driven steps) and **`@tool`** methods (callable capabilities). Events flow through a graph; the same agent can run in a **local runner** (development, sidecars) or as a **Flink operator** on the cluster via `AgentsExecutionEnvironment`.
+
+In Ratatoskr, that model powers **ops agents** (NiFi/Kafka/CM monitors, correlation, runbooks) as well as demo pipelines (honeypot, Studio). Flink Agents does **not** replace NiFi or Kafka — it **observes and optionally heals** them under policy gates.
+
+**LLM usage (no fine-tuning):** when ReAct agents call Cloudera AI Inference (or any OpenAI-compatible endpoint), they use a **stock hosted model**. Domain behavior comes from **inference-time grounding** — monitor facts, severity catalogs, allowlisted heal ops, system prompts, schema validation, and deterministic fallbacks — **not** from fine-tuning, continued pretraining, or custom model weights.
+
+```mermaid
+flowchart TB
+    subgraph Sources["Event sources"]
+        K[Kafka topics]
+        DS[PyFlink DataStream]
+        F[Files / APIs]
+    end
+
+    subgraph FlinkAgents["Apache Flink Agents"]
+        A[Agent class]
+        ACT["@action handlers"]
+        TL["@tool methods"]
+        EVT[Event graph]
+    end
+
+    subgraph Runners["Execution"]
+        LR[Local runner]
+        FE[Flink cluster operator]
+    end
+
+    subgraph Outputs["Outputs"]
+        AL[Alerts / decisions]
+        K2[Downstream Kafka]
+        DB[Dashboard / SIEM]
+    end
+
+    K & DS & F --> A
+    A --> ACT
+    A --> TL
+    ACT --> EVT
+    TL --> EVT
+    EVT --> LR & FE
+    LR & FE --> AL & K2 & DB
+```
+
+*Source: [`assets/images/flink-agents-overview.mmd`](../assets/images/flink-agents-overview.mmd)*
+
+Typical building blocks:
+
+| Concept | Role |
+|---------|------|
+| `Agent` | Container for actions and tools |
+| `@action(InputEvent)` | Entry point; runs when an input event arrives |
+| `@tool` | Named capability the agent (or LLM) can invoke |
+| `RunnerContext` | Resources, tool calls, state during execution |
+| `OutputEvent` | Structured result emitted to the next step |
+
+---
+
+## Workflow agents
+
+### What they are
+
+**Workflow agents** use an **explicit, code-defined control flow**. Every step is written in Python: which tools run, in what order, and which branches fire. There is **no LLM in the loop** unless you deliberately add one as a single step.
+
+![Workflow agent — deterministic control flow from event sources through tools and rule branches to sinks](../assets/images/WorkflowAgentsDiagram.png)
+
+*Source: [`assets/images/WorkflowAgentsDiagram.png`](../assets/images/WorkflowAgentsDiagram.png)*
+
+### Strengths
+
+- **Deterministic** — same input → same output (auditable for SOC and compliance)
+- **Fast** — no model latency; suitable for per-event hot paths
+- **Predictable cost** — no tokens per record
+- **Easy to test** — unit tests against deterministic policy modules
+
+### Weaknesses
+
+- New attack patterns require **code or config changes**
+- Less adaptive to novel or ambiguous context
+- Complex multi-step reasoning must be hand-authored
+
+### Execution model
+
+```mermaid
+sequenceDiagram
+    participant Src as Input event
+    participant Agent as Workflow Agent
+    participant T1 as Tool: check_ip_reputation
+    participant T2 as Tool: block_ip
+    participant Out as Output alert
+
+    Src->>Agent: InputEvent (Cowrie log)
+    Agent->>T1: always call (fixed order)
+    T1-->>Agent: reputation score
+    Note over Agent: Rule engine: eventid, severity floors
+    alt severity >= HIGH
+        Agent->>T2: invoke response tool
+        T2-->>Agent: block status
+        Agent->>Out: OutputEvent + response_actions
+    else below threshold
+        Agent->>Out: pass-through / no alert
+    end
+```
+
+*Source: [`assets/images/workflow-agent-flow.mmd`](../assets/images/workflow-agent-flow.mmd)*
+
+### Illustrative code (Flink Agents 0.3 style)
+
+```python
+from flink_agents.api.agents.agent import Agent
+from flink_agents.api.decorators import action, tool
+from flink_agents.api.events.event import Event, InputEvent, OutputEvent
+from flink_agents.api.runner_context import RunnerContext
+
+class CowrieResponseAgent(Agent):
+    @tool
+    def check_ip_reputation(self, ip: str) -> dict:
+        ...
+
+    @tool
+    def block_ip(self, ip: str) -> dict:
+        ...
+
+    @action(InputEvent)
+    def detect_and_respond(self, event: Event, ctx: RunnerContext):
+        log = event.payload
+        rep = self.check_ip_reputation(log["src_ip"])
+        severity = classify_cowrie_event(log, rep)  # deterministic policy
+        if severity_at_least(severity, "HIGH"):
+            self.block_ip(log["src_ip"])
+            yield OutputEvent(alert=build_alert(log, severity, rep))
+```
+
+In this repo, shared policy lives in `cowrie_workflow_detect` / `cowrie_policy.py`. Phase 2 publishes to **`cowrie.alerts`** with `detection_source` of `pure_python` or `flink_agents` depending on `COWRIE_PHASE2_ENGINE`.
+
+### When to use workflow agents
+
+| Scenario | Fit |
+|----------|-----|
+| Auto-block, rate limits, known IOCs | Excellent |
+| High-throughput Kafka/Flink pipelines | Excellent |
+| Regulatory need for reproducible decisions | Excellent |
+| Novel social-engineering narrative analysis | Poor |
+
+---
+
+## ReAct agents
+
+### What they are
+
+**ReAct** (Reasoning + Acting) agents let an **LLM** drive decisions: observe the event, **reason** about it, **choose tools**, observe results, and repeat until a stop condition. Tools are still ordinary `@tool` methods; the difference is **who picks them** — the model, not fixed code order.
+
+![ReAct agent — LLM-driven observe → think → act tool loop from event sources to sinks](../assets/images/ReactAgentsDiagram.png)
+
+*Source: [`assets/images/ReactAgentsDiagram.png`](../assets/images/ReactAgentsDiagram.png)*
+
+### Strengths
+
+- **Flexible at inference** — LLM reasoning over novel context (unusual events, edge cases)
+- **Explainable** — model outputs reasoning text (`react_reasoning`)
+- **Flexible tool use** — can skip or reorder tools by context
+- **Prompt/tool changes without redeploying heal rules** — update instructions and allowlists; **no model weight updates**
+
+### Weaknesses
+
+- **Latency** — often seconds per event (10–60s with remote LLMs)
+- **Cost** — API/tokens per invocation
+- **Variance** — needs guardrails, severity floors, structured output validation
+- **Must not gate critical safety actions** alone in production
+
+### Execution model
+
+```mermaid
+flowchart TB
+    EVT[Normalized event]
+
+    subgraph Loop["ReAct loop per event"]
+        direction TB
+        OBS[Observe event + context]
+        TH[Think — LLM reasoning]
+        ACT["Act — choose tools"]
+        OBS --> TH --> ACT
+    end
+
+    EVT --> OBS
+
+    subgraph Tools["Registered @tools"]
+        direction TB
+        R[check_ip_reputation]
+        B[block_ip]
+        CA[counter_attack_*]
+        AL[send_security_alert]
+    end
+
+    ACT --> R & B & CA & AL
+    R & B & CA & AL --> MERGE[Tool results]
+    MERGE -->|next iteration| OBS
+
+    subgraph Result["Structured output"]
+        direction TB
+        RS[react_reasoning]
+        CF[confidence + severity]
+        AA[actions_taken / counter_attack_actions]
+    end
+
+    ACT -->|stop condition| RS
+    RS --> CF --> AA
+```
+
+*Source: [`assets/images/react-agent-loop.mmd`](../assets/images/react-agent-loop.mmd)*
+
+### In this repository
+
+Phase 3 runs as **`kafka-react-augmentor`** — a Kafka consumer sidecar, not a synchronous Flink `map()`:
+
+- Consumes normalized/enriched events
+- Invokes Cloudera-hosted LLM (Qwen) via `cloudera_llm_config`
+- Publishes to **`cowrie.react_alerts`** with `detection_source=cloudera_react`
+- Optional **summary mode** (`COWRIE_PHASE3_SUMMARY=1`) uses a lighter workflow-style single LLM step instead of full ReAct
+
+`cowrie_pipeline.hot_path_allows_react()` defaults to **false** so ReAct cannot block the hot path unless `COWRIE_ALLOW_REACT_ON_HOT_PATH=1` (lab only).
+
+### When to use ReAct agents
+
+| Scenario | Fit |
+|----------|-----|
+| Analyst copilot, alert enrichment | Excellent |
+| CRITICAL-only deep dive | Good (with filters) |
+| Per-event auto-block on full firehose | Poor |
+| Inline Flink operator on every record | Anti-pattern |
+
+---
+
+## Side-by-side comparison
+
+| Dimension | Workflow | ReAct |
+|-----------|----------|-------|
+| Control flow | Developer-defined `@action` graph | LLM-driven tool loop |
+| Latency | Milliseconds–seconds | Seconds–minutes |
+| Determinism | High | Low (guardrailed) |
+| LLM required | No | Yes |
+| Best execution | Flink hot path, sidecar sync jobs | Async Kafka sidecar |
+| Output topic (demo) | `cowrie.alerts` | `cowrie.react_alerts` |
+| `detection_source` | `pure_python`, `flink_agents` | `cloudera_react`, `cloudera_summary` |
+| Testing | Policy unit tests | `validate_react_alert`, compare demos |
+
+---
+
+## Recommended hybrid pattern
+
+Production systems should **not** choose one paradigm globally. Use workflow for **safety-critical, high-volume** paths and ReAct for **enrichment** on a subset of events.
+
+```mermaid
+flowchart TB
+    C[Cowrie JSON log] --> K[cowrie.normalized]
+
+    subgraph Phase2["Phase 2 — Workflow (hot path)"]
+        W[cowrie_workflow_detect]
+        BL[Auto-block IP]
+        TA[cowrie.alerts]
+    end
+
+    subgraph Phase3["Phase 3 — ReAct (async sidecar)"]
+        F{Filter: severity / sample}
+        R[kafka-react-augmentor]
+        LLM[Cloudera LLM]
+        TR[cowrie.react_alerts]
+    end
+
+    K --> W
+    W --> BL
+    W --> TA
+    K --> F
+    F -->|qualifying events| R --> LLM --> TR
+    F -->|skip| X[No LLM call]
+
+    TA --> D[Dashboard / SIEM]
+    TR --> D
+```
+
+*Source: [`assets/images/workflow-vs-react-hybrid.mmd`](../assets/images/workflow-vs-react-hybrid.mmd)*
+
+### Routing rules (this repo)
+
+1. **Every event** → Phase 2 workflow (`COWRIE_COUNTER_ATTACK_ENGINE=workflow`)
+2. **Selected events** → Phase 3 ReAct (severity filter, sample rate, or `COWRIE_PHASE3_SUMMARY`)
+3. **Never** call ReAct inside Phase 2 Flink `map()` or log-processor hot path when `COWRIE_KAFKA_PIPELINE=1`
+4. Merge both alert streams in the dashboard via `kafka-alerts-to-dashboard` or Streamlit
+
+### Decision guide
+
+```mermaid
+flowchart TD
+    Q[Incoming security event]
+    Q --> H{Must block in < 1s?}
+    H -->|Yes| WF[Workflow agent]
+    H -->|No| C{Need LLM reasoning?}
+    C -->|No| WF
+    C -->|Yes| R[ReAct sidecar]
+    WF --> A[cowrie.alerts]
+    R --> B[cowrie.react_alerts]
+    A --> M[Merge for SOC / dashboard]
+    B --> M
+```
+
+---
+
+## Phase 2 engine note: `pure_python` vs `flink_agents`
+
+Both are **workflow** paradigms; the flag only changes **how** detection is wired in Flink:
+
+| `COWRIE_PHASE2_ENGINE` | Implementation | Status |
+|------------------------|----------------|--------|
+| `pure_python` (default) | PyFlink `map(workflow_map_line)` | Production default |
+| `flink_agents` | `AgentsExecutionEnvironment` + `CowrieResponseAgent` | Experimental spike |
+
+Policy code is shared; alerts should match on core fields. See [PRODUCTION_ARCHITECTURE.md](PRODUCTION_ARCHITECTURE.md#phase-2-engine-spike-cowrie_phase2_engine).
+
+---
+
+## Try it in this workspace
+
+```bash
+pip install -e .
+ratatoskr build
+ratatoskr up --profile full
+
+# Workflow path (Phase 2)
+ratatoskr test phase2 --e2e
+
+# ReAct enrichment (Phase 3; needs Cloudera creds in .env)
+ratatoskr test phase3 --e2e
+ratatoskr test react --compare
+
+# Full production routing
+ratatoskr test production --e2e
+```
+
+Demos (when present under `honeypot/demo/` or `examples/`):
+
+- Workflow: `demo_cowrie_response.py`, `demo_cybersecurity.py`
+- ReAct: `demo_react_agent.py`, `demo_workflow_vs_react.py`
+
+---
+
+## Diagram sources
+
+Mermaid sources live in [`assets/images/`](../assets/images/). Regenerate PNGs:
+
+```bash
+./scripts/render_architecture_diagrams.sh
+```
+
+| File | Description |
+|------|-------------|
+| `flink-agents-overview.mmd` | Stack: sources → agent → runners → outputs |
+| `workflow-agent-flow.mmd` | Sequence: fixed tool order + rules |
+| `react-agent-loop.mmd` | ReAct observe–think–act loop |
+| `workflow-vs-react-hybrid.mmd` | Cowrie Phase 2 + Phase 3 split |
+
+Honeypot-specific topology diagrams: [`honeypot/docs/images/`](../honeypot/docs/images/).
+
+---
+
+## Further reading
+
+- [Apache Flink Agents GitHub](https://github.com/apache/flink-agents)
+- [Flink Agents 0.3 documentation](https://nightlies.apache.org/flink/flink-agents-docs-release-0.3/)
+- [PRODUCTION_ARCHITECTURE.md](PRODUCTION_ARCHITECTURE.md)
+- [COWRIE_QUICKSTART.md](COWRIE_QUICKSTART.md)

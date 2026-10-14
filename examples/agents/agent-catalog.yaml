@@ -1,0 +1,383 @@
+categories:
+- id: workflow
+  label: Workflow Agents
+  description: Deterministic @action / @tool agents for stream processing pipelines.
+  subcategories:
+  - id: transform
+    label: Transform
+    description: Map or reshape record fields without LLM calls.
+    agents:
+    - id: double_value
+      manifest: workflow_counter
+      display_name: Double Value
+      description: Doubles numeric input values using a @tool. Ideal for Studio smoke
+        tests with workflow.test.input.
+      tags:
+      - demo
+      - transform
+      - numeric
+      input_schema:
+        type: object
+        required:
+        - value
+        properties:
+          value:
+            type: integer
+            description: Number to double
+      output_schema:
+        type: object
+        properties:
+          input:
+            type: integer
+          doubled:
+            type: integer
+          agent:
+            type: string
+    - id: api_fetch
+      manifest: workflow_api_fetch
+      display_name: API Fetch
+      description: Polls REST APIs (one fetch per upstream event), normalizes JSON
+        responses into uniform records, and emits structured events. Configure the
+        base URL in Settings.
+      tags:
+      - demo
+      - http
+      - integration
+      - source
+      input_schema:
+        type: object
+        properties:
+          path:
+            type: string
+            description: Optional path suffix appended to the configured base URL
+          path_suffix:
+            type: string
+            description: Alias for path
+          query:
+            type: object
+            description: Query parameters merged into the request URL
+          body:
+            type: object
+            description: JSON body for POST requests
+          expand_records:
+            type: boolean
+            description: When true, emit one output event per normalized record
+      output_schema:
+        type: object
+        properties:
+          agent:
+            type: string
+          event_type:
+            type: string
+          url:
+            type: string
+          http_method:
+            type: string
+          status_code:
+            type: integer
+          ok:
+            type: boolean
+          fetched_at:
+            type: string
+          record_count:
+            type: integer
+          records:
+            type: array
+            description: Normalized API records with payload, index, and source_url
+          record:
+            type: object
+            description: Present when expand_records is true
+          error:
+            type: string
+          input:
+            type: object
+    - id: session_detect
+      manifest: session_detect
+      display_name: Session Detect
+      description: Classify closed src_ip sessions from dynamic Flink windows and
+        block on high/critical severity.
+      tags:
+      - demo
+      - security
+      - window
+      input_schema:
+        type: object
+        required:
+        - src_ip
+        - events
+        properties:
+          src_ip:
+            type: string
+          events:
+            type: array
+          event_count:
+            type: integer
+      output_schema:
+        type: object
+        properties:
+          src_ip:
+            type: string
+          severity:
+            type: string
+          event_count:
+            type: integer
+          response_actions:
+            type: array
+          agent:
+            type: string
+    - id: cm_monitor
+      manifest: workflow_cm_monitor
+      display_name: Cloudera Manager Monitor
+      description: Poll Cloudera Manager cluster, service, role, and host health via
+        the CM REST API. Emits structured fix recommendations only — no mutations.
+      tags:
+      - demo
+      - cloudera
+      - monitoring
+      - ops
+      input_schema:
+        type: object
+        properties:
+          cluster:
+            type: string
+            description: CM cluster name (default CM_CLUSTER env)
+      output_schema:
+        type: object
+        properties:
+          agent:
+            type: string
+          classification:
+            type: object
+          health:
+            type: object
+          recommendations:
+            type: array
+          audit:
+            type: object
+    - id: react_cm_runbook
+      manifest: react_cm_runbook
+      display_name: CM Debug Runbook
+      description: Turns workflow_cm_monitor OutputEvents into a structured diagnosis
+        → remediation → verify runbook. Deterministic fallback; never mutates Cloudera
+        Manager.
+      tags:
+      - demo
+      - cloudera
+      - react
+      - ops
+      input_schema:
+        type: object
+        properties:
+          classification:
+            type: object
+          health:
+            type: object
+          recommendations:
+            type: array
+          monitor:
+            type: object
+      output_schema:
+        type: object
+        properties:
+          agent:
+            type: string
+          mutations:
+            type: array
+          runbook:
+            type: object
+          source:
+            type: object
+    - id: nifi_monitor
+      manifest: workflow_nifi_monitor
+      display_name: NiFi Flow Monitor
+      description: Poll Apache NiFi flow health (stopped/invalid processors, queues,
+        bulletins) and optionally auto-heal. Gate mutations with NIFI_HEAL_PHASE=monitor|safe|lab.
+      tags:
+      - demo
+      - nifi
+      - monitoring
+      - ops
+      input_schema:
+        type: object
+        properties:
+          process_group_id:
+            type: string
+            description: NiFi process group id (default root)
+          phase:
+            type: string
+            description: Override heal phase for this event (monitor|safe|lab)
+      output_schema:
+        type: object
+        properties:
+          agent:
+            type: string
+          phase:
+            type: string
+          classification:
+            type: object
+          health:
+            type: object
+          heal_actions:
+            type: array
+          mutations:
+            type: array
+- id: react
+  label: ReAct Agents
+  description: Tool-chaining agents with planning loops (lab / enrichment paths).
+  llm_required: true
+  subcategories:
+  - id: text
+    label: Text Processing
+    description: Classify and summarize text payloads.
+    agents:
+    - id: react_echo
+      manifest: react_echo
+      display_name: Echo & Classify
+      description: Tool-chaining lab agent (no LLM) — classify and summarize text.
+      tags:
+      - demo
+      - text
+      - react
+      input_schema:
+        type: object
+        properties:
+          message:
+            type: string
+            description: Text to classify and summarize
+  - id: ops
+    label: Ops (explain-only)
+    description: Operator briefs and runbooks from monitor facts — never mutate.
+    agents:
+    - id: react_nifi_runbook
+      manifest: react_nifi_runbook
+      display_name: NiFi Debug Runbook
+      description: Turns workflow_nifi_monitor OutputEvents into a structured diagnosis
+        → remediation → verify runbook. Uses Designer / Cloudera Inference when configured;
+        otherwise deterministic fallback. Never mutates NiFi.
+      tags:
+      - demo
+      - nifi
+      - react
+      - ops
+      - llm
+      input_schema:
+        type: object
+        properties:
+          classification:
+            type: object
+            description: Monitor classification (or pass full monitor OutputEvent)
+          health:
+            type: object
+          heal_plan:
+            type: array
+          monitor:
+            type: object
+            description: Optional wrapper containing the monitor event
+      output_schema:
+        type: object
+        properties:
+          agent:
+            type: string
+          mutations:
+            type: array
+          runbook:
+            type: object
+          source:
+            type: object
+          mode:
+            type: string
+    - id: react_cross_runbook
+      manifest: react_cross_runbook
+      display_name: Cross-Signal Runbook
+      description: Turns workflow_signal_correlate OutputEvents into a structured
+        NiFi↔Kafka diagnosis → remediation → verify runbook. Never mutates.
+      tags:
+      - demo
+      - nifi
+      - kafka
+      - react
+      - ops
+      - llm
+      input_schema:
+        type: object
+        properties:
+          incidents:
+            type: array
+          classification:
+            type: object
+          signals:
+            type: object
+          correlation:
+            type: object
+      output_schema:
+        type: object
+        properties:
+          agent:
+            type: string
+          mutations:
+            type: array
+          runbook:
+            type: object
+          source:
+            type: object
+  - id: numeric
+    label: Numeric (LLM)
+    description: Extract and transform numbers using ReAct + LLM prompts.
+    agents:
+    - id: react_double_value
+      manifest: react_double_value
+      display_name: ReAct Double Value
+      description: Takes an incoming message, prompts the LLM to identify the numeric
+        input, doubles it, and outputs the result. Uses Designer LLM settings.
+      tags:
+      - demo
+      - react
+      - numeric
+      - llm
+      input_schema:
+        type: object
+        properties:
+          message:
+            type: string
+            description: Message describing or containing the value to double
+          value:
+            type: integer
+            description: Optional explicit numeric hint for the LLM
+      output_schema:
+        type: object
+        properties:
+          message:
+            type: string
+          input:
+            type: integer
+          doubled:
+            type: integer
+          reasoning:
+            type: string
+          mode:
+            type: string
+          agent:
+            type: string
+    - id: react_skills_demo
+      manifest: react_skills_demo
+      display_name: ReAct Skills Demo
+      description: Native Flink chat model with the math-calculator skill. Loads SKILL.md
+        on demand and evaluates expressions via bc. Uses Designer LLM settings.
+      tags:
+      - demo
+      - react
+      - skills
+      - llm
+      input_schema:
+        type: object
+        properties:
+          message:
+            type: string
+            description: Arithmetic question for the model
+      output_schema:
+        type: object
+        properties:
+          answer:
+            type: string
+          agent:
+            type: string

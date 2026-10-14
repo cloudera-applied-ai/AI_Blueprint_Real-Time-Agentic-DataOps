@@ -1,0 +1,447 @@
+#!/usr/bin/env python3
+"""Pipeline cluster submit (PR1) tests."""
+
+from __future__ import annotations
+
+import os
+import tempfile
+from pathlib import Path
+import pytest
+
+
+def _batch_pipeline():
+    from ratatoskr.pipelines.models import Pipeline, PipelineEdge, PipelineNode
+
+    return Pipeline(
+        id="pipe_cluster_test",
+        name="Counter batch",
+        nodes=[
+            PipelineNode(
+                id="src1",
+                kind="source",
+                config={"records": [{"key": "1", "value": 3}]},
+            ),
+            PipelineNode(id="agent_wc", kind="agent", agent="workflow_counter"),
+            PipelineNode(id="sink1", kind="sink", config={"sink_type": "capture"}),
+        ],
+        edges=[
+            PipelineEdge(id="e1", source="src1", target="agent_wc"),
+            PipelineEdge(id="e2", source="agent_wc", target="sink1"),
+        ],
+    )
+
+
+def test_validate_pipeline_cluster_rejects_kafka_source() -> None:
+    from ratatoskr.pipelines.models import Pipeline, PipelineNode
+    from ratatoskr.pipelines.validate_cluster import validate_pipeline_cluster
+
+    pipeline = Pipeline(
+        id="pipe_kafka",
+        name="kafka",
+        nodes=[
+            PipelineNode(
+                id="src1",
+                kind="source",
+                config={"source_type": "kafka", "topic": "workflow.test.input"},
+            ),
+            PipelineNode(id="agent_wc", kind="agent", agent="workflow_counter"),
+            PipelineNode(id="sink1", kind="sink"),
+        ],
+        edges=[],
+    )
+    result = validate_pipeline_cluster(pipeline)
+    assert result["valid"] is False
+    assert any("window" in err.lower() for err in result["errors"])
+
+
+def test_validate_pipeline_cluster_allows_kafka_sink() -> None:
+    from ratatoskr.pipelines.models import Pipeline, PipelineEdge, PipelineNode
+    from ratatoskr.pipelines.validate_cluster import validate_pipeline_cluster
+
+    pipeline = Pipeline(
+        id="pipe_kafka_sink",
+        name="kafka sink",
+        nodes=[
+            PipelineNode(
+                id="src1",
+                kind="source",
+                config={"records": [{"key": "1", "value": 3}]},
+            ),
+            PipelineNode(id="agent_wc", kind="agent", agent="workflow_counter"),
+            PipelineNode(
+                id="sink1",
+                kind="sink",
+                config={"sink_type": "kafka", "topic": "workflow.test.output"},
+            ),
+        ],
+        edges=[
+            PipelineEdge(id="e1", source="src1", target="agent_wc"),
+            PipelineEdge(id="e2", source="agent_wc", target="sink1"),
+        ],
+    )
+    result = validate_pipeline_cluster(pipeline)
+    assert result["valid"] is True
+    assert result["mode"] == "batch_kafka_sink"
+
+
+def test_sample_cluster_kafka_sink_output_uses_configured_topic(monkeypatch: pytest.MonkeyPatch) -> None:
+    from ratatoskr.pipelines.cluster_submit import _sample_cluster_kafka_sink_output
+    from ratatoskr.pipelines.models import Pipeline, PipelineNode
+
+    calls: dict[str, object] = {}
+
+    def fake_sample_topic_records(
+        topic: str,
+        *,
+        limit: int,
+        bootstrap: str | None,
+        timeout_ms: int,
+    ) -> list[dict[str, object]]:
+        calls.update(
+            {
+                "topic": topic,
+                "limit": limit,
+                "bootstrap": bootstrap,
+                "timeout_ms": timeout_ms,
+            }
+        )
+        return [{"key": "1", "value": {"squared": 9}}]
+
+    monkeypatch.setattr(
+        "ratatoskr.kafka_sources.sample_topic_records",
+        fake_sample_topic_records,
+    )
+    pipeline = Pipeline(
+        id="pipe_sample",
+        name="sample",
+        nodes=[
+            PipelineNode(id="src1", kind="source"),
+            PipelineNode(
+                id="sink1",
+                kind="sink",
+                config={
+                    "sink_type": "kafka",
+                    "topic": "workflow.test.output",
+                    "sample_limit": 3,
+                    "bootstrap": "localhost:9094",
+                },
+            ),
+        ],
+        edges=[],
+    )
+
+    output = _sample_cluster_kafka_sink_output(pipeline)
+
+    assert output == [{"key": "1", "value": {"squared": 9}}]
+    assert calls == {
+        "topic": "workflow.test.output",
+        "limit": 3,
+        "bootstrap": "localhost:9094",
+        "timeout_ms": 8000,
+    }
+
+
+def test_record_cluster_sink_span_persists_default_topic_and_count() -> None:
+    from ratatoskr.pipelines.cluster_submit import _record_cluster_sink_span
+    from ratatoskr.pipelines.models import Pipeline, PipelineNode
+
+    class FakeRunService:
+        def __init__(self) -> None:
+            self.spans: list[dict[str, object]] = []
+            self.record_count: int | None = None
+
+        def append_span(self, run_id: str, **kwargs: object) -> None:
+            self.spans.append({"run_id": run_id, **kwargs})
+
+        def set_record_count(self, run_id: str, count: int) -> None:
+            self.record_count = count
+
+    pipeline = Pipeline(
+        id="pipe_record",
+        name="record",
+        nodes=[
+            PipelineNode(id="src1", kind="source"),
+            PipelineNode(id="sink1", kind="sink", config={"sink_type": "kafka"}),
+        ],
+        edges=[],
+    )
+    service = FakeRunService()
+    output = [{"input": 3, "squared": 9}]
+
+    count = _record_cluster_sink_span(service, "run_123", pipeline, output)  # type: ignore[arg-type]
+
+    assert count == 1
+    assert service.record_count == 1
+    assert service.spans == [
+        {
+            "run_id": "run_123",
+            "kind": "sink",
+            "name": "workflow.test.output",
+            "output_data": output,
+            "input_data": {"sink_type": "kafka", "topic": "workflow.test.output"},
+        }
+    ]
+
+
+def test_validate_pipeline_cluster_warns_published_react() -> None:
+    from pathlib import Path
+
+    from ratatoskr.pipelines.models import Pipeline, PipelineEdge, PipelineNode
+    from ratatoskr.pipelines.validate_cluster import (
+        PUBLISHED_REACT_CLUSTER_WARNING,
+        validate_pipeline_cluster,
+    )
+
+    root = Path(__file__).resolve().parents[1]
+    if not (root / ".ratatoskr/agents/def_a8888ce93ad3/agent.py").is_file():
+        return
+
+    pipeline = Pipeline(
+        id="pipe_pub",
+        name="Published",
+        nodes=[
+            PipelineNode(
+                id="src1",
+                kind="source",
+                config={"records": [{"key": "1", "value": 3}]},
+            ),
+            PipelineNode(id="agent1", kind="agent", agent="basicreact"),
+            PipelineNode(id="sink1", kind="sink"),
+        ],
+        edges=[
+            PipelineEdge(id="e1", source="src1", target="agent1"),
+            PipelineEdge(id="e2", source="agent1", target="sink1"),
+        ],
+    )
+    result = validate_pipeline_cluster(pipeline)
+    assert result["valid"] is True
+    assert any(PUBLISHED_REACT_CLUSTER_WARNING in w for w in result["warnings"])
+    assert any("basicreact" in w for w in result["warnings"])
+
+
+def test_validate_pipeline_includes_cluster_section() -> None:
+    import tempfile
+    from pathlib import Path
+
+    from ratatoskr.pipelines.service import PipelineService, reset_pipeline_service_for_tests
+    from ratatoskr.pipelines.store import PipelineStore
+
+    reset_pipeline_service_for_tests()
+    with tempfile.TemporaryDirectory() as tmp:
+        service = PipelineService(PipelineStore(Path(tmp) / "pipelines.db"))
+        created = service.create(
+            name="Counter batch",
+            nodes=[
+                {
+                    "id": "src1",
+                    "kind": "source",
+                    "config": {"records": [{"key": "1", "value": 1}]},
+                },
+                {"id": "agent_wc", "kind": "agent", "agent": "workflow_counter"},
+                {"id": "sink1", "kind": "sink", "config": {"sink_type": "capture"}},
+            ],
+            edges=[
+                {"id": "e1", "source": "src1", "target": "agent_wc"},
+                {"id": "e2", "source": "agent_wc", "target": "sink1"},
+            ],
+        )
+        body = service.validate(created["id"])
+        assert "cluster" in body
+        assert isinstance(body["cluster"]["warnings"], list)
+        assert body["cluster"]["valid"] is True
+    reset_pipeline_service_for_tests()
+
+
+def test_generate_cluster_runner_workflow_counter() -> None:
+    from ratatoskr.pipelines.cluster_codegen import cluster_job_name, generate_cluster_runner
+
+    pipeline = _batch_pipeline()
+    script = generate_cluster_runner(pipeline)
+    assert "from examples.agents.workflow_counter import CounterAgent" in script
+    assert "env.from_collection(RECORDS)" in script
+    assert "stream.print()" in script
+    assert "patch_flink_agents_version()" in script
+
+
+def test_generate_cluster_runner_published_agent_import() -> None:
+    from pathlib import Path
+
+    from ratatoskr.pipelines.cluster_codegen import generate_cluster_runner
+    from ratatoskr.pipelines.models import Pipeline, PipelineEdge, PipelineNode
+
+    root = Path(__file__).resolve().parents[1]
+    if not (root / ".ratatoskr/agents/def_a8888ce93ad3/agent.py").is_file():
+        return
+
+    pipeline = Pipeline(
+        id="pipe_pub",
+        name="Published",
+        nodes=[
+            PipelineNode(
+                id="src1",
+                kind="source",
+                config={"records": [{"key": "1", "value": 3}]},
+            ),
+            PipelineNode(id="agent1", kind="agent", agent="basicreact"),
+            PipelineNode(id="sink1", kind="sink"),
+        ],
+        edges=[
+            PipelineEdge(id="e1", source="src1", target="agent1"),
+            PipelineEdge(id="e2", source="agent1", target="sink1"),
+        ],
+    )
+    script = generate_cluster_runner(pipeline, root=root)
+    assert "from ratatoskr_published_def_a8888ce93ad3 import BasicreactAgent" in script
+    assert "published_shims" not in script
+
+
+def test_generate_cluster_runner_kafka_sink_default_topic() -> None:
+    from ratatoskr.pipelines.cluster_codegen import generate_cluster_runner
+    from ratatoskr.pipelines.models import Pipeline, PipelineEdge, PipelineNode
+
+    pipeline = Pipeline(
+        id="pipe_ks_default",
+        name="Kafka sink default",
+        nodes=[
+            PipelineNode(
+                id="src1",
+                kind="source",
+                config={"records": [{"key": "1", "value": 3}]},
+            ),
+            PipelineNode(id="agent_wc", kind="agent", agent="workflow_counter"),
+            PipelineNode(id="sink1", kind="sink", config={"sink_type": "kafka"}),
+        ],
+        edges=[
+            PipelineEdge(id="e1", source="src1", target="agent_wc"),
+            PipelineEdge(id="e2", source="agent_wc", target="sink1"),
+        ],
+    )
+    script = generate_cluster_runner(pipeline)
+    assert "deliver_batch_kafka_sink" not in script
+    assert "KafkaSinkAgent" not in script
+    assert "stream.print()" in script
+
+
+def test_generate_cluster_runner_kafka_sink() -> None:
+    from ratatoskr.pipelines.cluster_codegen import generate_cluster_runner
+    from ratatoskr.pipelines.models import Pipeline, PipelineEdge, PipelineNode
+
+    pipeline = Pipeline(
+        id="pipe_ks",
+        name="Kafka sink",
+        nodes=[
+            PipelineNode(
+                id="src1",
+                kind="source",
+                config={"records": [{"key": "1", "value": 3}]},
+            ),
+            PipelineNode(id="agent_wc", kind="agent", agent="workflow_counter"),
+            PipelineNode(
+                id="sink1",
+                kind="sink",
+                config={"sink_type": "kafka", "topic": "workflow.test.output"},
+            ),
+        ],
+        edges=[
+            PipelineEdge(id="e1", source="src1", target="agent_wc"),
+            PipelineEdge(id="e2", source="agent_wc", target="sink1"),
+        ],
+    )
+    script = generate_cluster_runner(pipeline)
+    assert "deliver_batch_kafka_sink" not in script
+    assert "PublishToKafka" not in script
+    assert "MapFunction" not in script
+    assert "stream.print()" in script
+
+
+def test_generate_cluster_runner_counter_echo_mapping() -> None:
+    from ratatoskr.pipelines.cluster_codegen import generate_cluster_runner
+    from ratatoskr.pipelines.models import Pipeline, PipelineEdge, PipelineNode
+
+    pipeline = Pipeline(
+        id="pipe_ce",
+        name="Counter then Echo",
+        nodes=[
+            PipelineNode(
+                id="src1",
+                kind="source",
+                config={"records": [{"key": "1", "value": 3}]},
+            ),
+            PipelineNode(id="agent_wc", kind="agent", agent="workflow_counter"),
+            PipelineNode(id="agent_re", kind="agent", agent="react_echo"),
+            PipelineNode(id="sink1", kind="sink"),
+        ],
+        edges=[
+            PipelineEdge(id="e1", source="src1", target="agent_wc"),
+            PipelineEdge(
+                id="e2",
+                source="agent_wc",
+                target="agent_re",
+                mapping={"message": "$.doubled"},
+            ),
+            PipelineEdge(id="e3", source="agent_re", target="sink1"),
+        ],
+    )
+    script = generate_cluster_runner(pipeline)
+    assert "ReactEchoAgent" in script
+    assert "apply_edge_mapping" in script
+    assert "$.doubled" in script
+
+
+def test_pipeline_cluster_submit_api_mocked() -> None:
+    from dataclasses import asdict
+    from unittest.mock import patch
+
+    os.environ.pop("RATATOSKR_API_KEY", None)
+    from fastapi.testclient import TestClient
+
+    from ratatoskr.api.app import create_app
+    from ratatoskr.api.config import ApiSettings
+    from ratatoskr.pipelines.cluster_submit import PipelineClusterSubmitResult
+    from ratatoskr.pipelines.service import PipelineService, reset_pipeline_service_for_tests
+    from ratatoskr.pipelines.store import PipelineStore
+
+    reset_pipeline_service_for_tests()
+    pipeline = _batch_pipeline()
+    with tempfile.TemporaryDirectory() as tmp:
+        db = Path(tmp) / "pipelines.db"
+        os.environ["RATATOSKR_PIPELINES_DB"] = str(db)
+        service = PipelineService(PipelineStore(db))
+        created = service.create(
+            name=pipeline.name,
+            nodes=[asdict(n) for n in pipeline.nodes],
+            edges=[asdict(e) for e in pipeline.edges],
+        )
+
+        client = TestClient(
+            create_app(ApiSettings(api_key=None, flink_rest_host="127.0.0.1", flink_rest_port=1))
+        )
+
+        with patch(
+            "ratatoskr.pipelines.service.submit_pipeline_cluster",
+            return_value=PipelineClusterSubmitResult(
+                run_id="run_test123",
+                return_code=0,
+                flink_job_id="job_abc",
+                validation={"valid": True, "errors": [], "warnings": [], "mode": "batch"},
+            ),
+        ):
+            response = client.post(f"/v1/pipelines/{created['id']}/submit")
+
+        assert response.status_code == 200
+        body = response.json()
+        assert body["run_id"] == "run_test123"
+        assert body["flink_job_id"] == "job_abc"
+        assert body["status"] == "submitted"
+
+        del os.environ["RATATOSKR_PIPELINES_DB"]
+        reset_pipeline_service_for_tests()
+
+
+if __name__ == "__main__":
+    test_validate_pipeline_cluster_rejects_kafka_source()
+    test_validate_pipeline_cluster_allows_kafka_sink()
+    test_generate_cluster_runner_workflow_counter()
+    test_generate_cluster_runner_counter_echo_mapping()
+    print("OK  pipeline cluster submit tests")
+    print("PASS")

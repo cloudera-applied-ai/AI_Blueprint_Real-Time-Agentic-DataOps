@@ -1,0 +1,159 @@
+# Ratatoskr — Flink Agents CLI
+
+<p align="center">
+  <img src="../assets/branding/Ratatoskr_title_image.png" alt="Ratatoskr — wood-textured wordmark and squirrel mascot" width="360" />
+</p>
+
+Python package for the **`ratatoskr`** command-line tool and **Control API** — build Flink Agents images, run registered agents, and expose a dashboard-ready HTTP surface.
+
+## Install
+
+```bash
+pip install -e .
+ratatoskr --help
+```
+
+Entry point: `ratatoskr.main:main` → `ratatoskr.cli:app` (Typer).
+
+## Commands
+
+### Stack & build
+
+| Command | Purpose |
+|---------|---------|
+| `ratatoskr build [git-ref]` | Build `agent_flink_image` from `Dockerfile` |
+| `ratatoskr up` | Start Docker Compose (default profile: `minimal`) |
+| `ratatoskr up --mode platform` | Flink stack + API docs URL in startup output |
+| `ratatoskr up --profile full` | Optional honeypot stack |
+| `ratatoskr down` / `status` / `logs` | Compose lifecycle |
+| `ratatoskr kafka up` / `down` / `status` | Studio Kafka (`deploy/docker-compose.kafka.yml`, host `:9094`) |
+| `./scripts/nifi_load_dataplane_flow.sh` | Schema / route / replay NiFi spine (`docs/SCHEMA_GATE.md`) |
+| `ratatoskr doctor` | Platform preflight (manifest, Flink REST, API) |
+
+### Agents
+
+| Command | Purpose |
+|---------|---------|
+| `ratatoskr agent list` | Agents from `examples/agents/agent-manifest.yaml` |
+| `ratatoskr agent describe <name>` | Metadata and entry class |
+| `ratatoskr agent run <name> --local` | Local `AgentsExecutionEnvironment` runner |
+| `ratatoskr agent run <name> --local --continuous` | Forever host polls (NiFi/Kafka monitors) |
+| `ratatoskr agent run <name> --cluster` | Submit cluster job via JobManager |
+| `ratatoskr agent run <name> --cluster --continuous` | Unbounded monitor job (Kafka poll ticks) |
+| `ratatoskr monitor start` / `status` / `stop` | Continuous NiFi/Kafka monitors (host or `--cluster`) |
+| `ratatoskr monitor start --cluster --phase safe` | Deploy continuous monitor+heal jobs to Flink |
+
+| `ratatoskr agent submit <name>` | Same as `--cluster` |
+| `ratatoskr agent status` | Flink jobs via REST |
+| `ratatoskr agent cancel <job-id>` | Cancel a Flink job |
+
+### Control API
+
+| Command | Purpose |
+|---------|---------|
+| `ratatoskr api start` | Run FastAPI on `:8090` (uvicorn) |
+| `ratatoskr api url` | Print configured base URL |
+| `ratatoskr api openapi [-o file]` | Dump OpenAPI JSON |
+| `ratatoskr api check` | Probe `/v1/health` |
+
+See [../docs/PLATFORM.md](../docs/PLATFORM.md) for endpoints, auth, and dashboard integration.
+
+### Demos, verify, test
+
+| Command | Purpose |
+|---------|---------|
+| `ratatoskr demo <name>` | Run demo in TaskManager (`datastream`, `workflow`, `react`, …) |
+| `ratatoskr verify --tier quick\|standard\|full` | Manifest-driven checks |
+| `ratatoskr test launch [--cluster]` | Flink Agents import + optional cluster submit |
+| `ratatoskr test validate` | Required workspace files (generic; honeypot paths with `--profile full`) |
+
+Legacy bytecode commands (`config`, `sync`, `dashboard`, …) load when available.
+
+## Package layout
+
+```text
+ratatoskr/
+├── cli.py                 # Top-level Typer app
+├── api/                   # FastAPI control plane
+├── agents/                # Registry + submit helpers
+├── nifi/                  # NiFi REST client + heal policy
+├── kafka/                 # Kafka admin client + heal policy
+├── correlation/           # NiFi↔Kafka rules, playbooks, scribe inputs
+├── designer/              # Agent definitions, LLM + API fetch settings
+├── pipelines/             # Studio pipelines, assist, validation, cluster codegen
+├── http/                  # Shared HTTP fetch helper (workflow_api_fetch)
+├── runtime/               # Flink cluster submit + studio sync
+├── kafka_sources.py       # Studio topic catalog / sample / publish
+├── docker_utils.py
+├── paths.py
+├── manifests.py
+└── commands/              # stack, build, agent, api, monitor, …
+```
+
+## Compose profiles
+
+| Profile | Compose file | Stack |
+|---------|--------------|-------|
+| `minimal` (default) | `deploy/docker-compose.yml` | JobManager + TaskManager |
+| `kafka` | `deploy/docker-compose.kafka.yml` | Studio Zookeeper + Kafka (`ratatoskr kafka up`) |
+| `nifi` | `deploy/` + `nifi/docker-compose.yml` | Minimal Flink + NiFi lab |
+| `full` | `honeypot/docker-compose.yml` | Cowrie honeypot + Kafka + pipeline |
+
+`configure_runtime_sys_path()` loads honeypot modules only for the `full` profile.
+
+Monitor guides: [docs/NIFI_MONITOR.md](../docs/NIFI_MONITOR.md) · [docs/KAFKA_MONITOR.md](../docs/KAFKA_MONITOR.md) · [docs/SIGNAL_CORRELATE.md](../docs/SIGNAL_CORRELATE.md) (cross runbook HITL) · [docs/NIFI_RUNBOOK.md](../docs/NIFI_RUNBOOK.md).
+
+## Environment
+
+| Variable | Default | Notes |
+|----------|---------|-------|
+| `RATATOSKR_API_KEY` | unset | Local dev: leave unset. Set for protected routes when API is exposed. |
+| `RATATOSKR_API_HOST` | `127.0.0.1` | API bind |
+| `RATATOSKR_API_PORT` | `8090` | API port |
+| `FLINK_REST_ADDRESS` | `localhost` | JobManager for API/CLI |
+| `FLINK_REST_PORT` | `8082` (minimal) / `8081` (full) | Host Flink REST port |
+| `KAFKA_BOOTSTRAP_SERVERS` | `localhost:9094` | Studio Kafka (after `ratatoskr kafka up`) |
+| `NIFI_HEAL_PHASE` / `KAFKA_HEAL_PHASE` / `CROSS_HEAL_PHASE` | `monitor` | Heal ladders — see monitor docs |
+| `KAFKA_CATALOG` | `studio` | Topic catalog (`studio` excludes cowrie.*) |
+| `RATATOSKR_API_FETCH_ENDPOINT_URL` | unset | Default URL for `workflow_api_fetch` |
+| `RATATOSKR_PROFILE` | `minimal` | Compose profile for agent/pipeline cluster submit |
+
+See [../.env.example](../.env.example).
+
+## Studio cluster restart
+
+After editing `ratatoskr/` runtime code, pipeline cluster codegen, or the Dockerfile:
+
+```bash
+./scripts/restart-studio-cluster.sh              # Flink + Kafka + sync + bootstrap
+./scripts/restart-studio-cluster.sh --build      # rebuild agent_flink_image first
+./scripts/restart-studio-cluster.sh --smoke      # + cluster launch smoke job
+./scripts/restart-studio-cluster.sh --sync-only  # copy code only (containers stay up)
+```
+
+The script loads `.env`, force-recreates minimal Flink JM/TM, starts Studio Kafka, copies runtime modules into containers (`studio_cluster_sync.py`), and bootstraps Flink Agents thin JARs (avoids Pemja classloader issues on TaskManagers).
+
+## Development
+
+```bash
+# No Docker
+ratatoskr verify --tier quick
+pytest test/test_cli_smoke.py test/test_generic_platform.py test/test_api_platform.py
+
+# Docker + doctor
+ratatoskr verify --tier standard
+ratatoskr build && ratatoskr up && ratatoskr test launch --cluster
+```
+
+## Subproject integration
+
+1. **`ratatoskr/paths.py`** — `examples_dir()`, optional `honeypot_dir()`
+2. **`ratatoskr/manifests/`** — verify tiers, startup modes, demo catalog
+3. **`honeypot/manifests/`** — optional honeypot overlays
+
+## See also
+
+- [../README.md](../README.md) — workspace overview
+- [../docs/PLATFORM.md](../docs/PLATFORM.md) — Control API and agents
+- [../examples/README.md](../examples/README.md) — example agents
+- [../honeypot/README.md](../honeypot/README.md) — optional Cowrie pipeline

@@ -1,0 +1,5 @@
+# Deprecated: use honeypot/docker-compose.yml (paths relative to honeypot/).
+# Kept as a pointer for older docs and bookmarks.
+#
+#   docker compose -f honeypot/docker-compose.yml up -d
+#   ratatoskr up --profile full

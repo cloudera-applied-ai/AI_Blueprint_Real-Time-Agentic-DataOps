@@ -1,0 +1,83 @@
+# NiFi lab stack — Apache NiFi for flow monitoring / healing demos.
+# Combined with Flink:
+#   docker compose -f deploy/docker-compose.yml -f nifi/docker-compose.yml up -d
+#   ratatoskr up --profile nifi
+#
+# UI:  https://localhost:8443/nifi  (accept self-signed cert)
+# API: https://localhost:8443/nifi-api
+
+services:
+  nifi:
+    image: ${NIFI_IMAGE:-apache/nifi:2.0.0}
+    ports:
+      - "${NIFI_HTTPS_PORT:-8443}:8443"
+    environment:
+      SINGLE_USER_CREDENTIALS_USERNAME: ${NIFI_USERNAME:-admin}
+      SINGLE_USER_CREDENTIALS_PASSWORD: ${NIFI_PASSWORD:-RatatoskrNiFi1!}
+      NIFI_WEB_HTTPS_PORT: 8443
+      # Listen on all interfaces (default can bind to container hostname only).
+      NIFI_WEB_HTTPS_HOST: 0.0.0.0
+      # Allow browser (localhost) and Flink containers (nifi service DNS)
+      NIFI_WEB_PROXY_HOST: "localhost:${NIFI_HTTPS_PORT:-8443},nifi:8443,nifi:${NIFI_HTTPS_PORT:-8443}"
+      # ConsumeKafka / PublishKafka bootstrap inside compose (Studio Kafka INTERNAL)
+      NIFI_KAFKA_BOOTSTRAP: ${NIFI_KAFKA_BOOTSTRAP:-kafka:9092}
+    volumes:
+      - nifi_conf:/opt/nifi/nifi-current/conf
+      - nifi_content:/opt/nifi/nifi-current/content_repository
+      - nifi_db:/opt/nifi/nifi-current/database_repository
+      - nifi_flowfile:/opt/nifi/nifi-current/flowfile_repository
+      - nifi_provenance:/opt/nifi/nifi-current/provenance_repository
+      - nifi_logs:/opt/nifi/nifi-current/logs
+      # Paths are relative to the Compose project dir (deploy/ when using ratatoskr).
+      - ../nifi/flows:/opt/nifi/flows:ro
+    # Lab: relax SNI so Flink can call https://nifi:8443 against the localhost cert.
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        set -euo pipefail
+        props=/opt/nifi/nifi-current/conf/nifi.properties
+        patch() {
+          [[ -f "$$props" ]] || return 0
+          if grep -q '^nifi.web.https.host=' "$$props"; then
+            sed -i 's/^nifi.web.https.host=.*/nifi.web.https.host=0.0.0.0/' "$$props"
+          else
+            echo 'nifi.web.https.host=0.0.0.0' >>"$$props"
+          fi
+          if grep -q '^nifi.web.https.sni.required=' "$$props"; then
+            sed -i 's/^nifi.web.https.sni.required=.*/nifi.web.https.sni.required=false/' "$$props"
+          else
+            echo 'nifi.web.https.sni.required=false' >>"$$props"
+          fi
+          if grep -q '^nifi.web.https.sni.host.check=' "$$props"; then
+            sed -i 's/^nifi.web.https.sni.host.check=.*/nifi.web.https.sni.host.check=false/' "$$props"
+          else
+            echo 'nifi.web.https.sni.host.check=false' >>"$$props"
+          fi
+        }
+        patch
+        ( for _ in $$(seq 1 30); do sleep 2; patch || true; done ) &
+        exec /opt/nifi/scripts/start.sh
+    healthcheck:
+      test: ["CMD-SHELL", "curl -kf https://localhost:8443/nifi-api/system-diagnostics >/dev/null 2>&1 || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 90s
+    networks:
+      - flink-network
+      # Studio Kafka INTERNAL listener (kafka:9092). Create via: ratatoskr kafka up
+      - kafka-network
+    restart: unless-stopped
+
+volumes:
+  nifi_conf:
+  nifi_content:
+  nifi_db:
+  nifi_flowfile:
+  nifi_provenance:
+  nifi_logs:
+
+networks:
+  kafka-network:
+    external: true
+    name: ratatoskr-kafka_kafka-network

@@ -1,0 +1,61 @@
+# Cloudera Blueprint catalog metadata
+# Populate fields used by the master blueprint website and internal catalog.
+
+# --- Identity ---
+name: "Real-Time Agentic DataOps"
+slug: "real-time-agentic-dataops" # URL-safe repo / catalog identifier
+description: "Build, run, and verify Apache Flink Agents with a CLI, Control API, visual designer, optional NiFi flow monitoring/healing, and Cowrie honeypot demo."
+reprise_link: "https://[catalog-url]/ratatoskr-flink-agents" # Public reprise link
+
+# --- Classification (website filters) ---
+catalog_classification:
+  - Developer Example # Options: Enterprise Blueprint | Research | Launchable (AMP) | Developer Example
+launchable: false # true | false
+lifecycle_status: Active # e.g., Active | Deprecated
+
+# --- Industry & alignment ---
+industry: General # e.g., General | Telecom | Financial Services | Healthcare & Life Sciences | Retail | Media | Physical AI & Robotics
+industry_alignment: "Horizontal" # Horizontal | Vertical
+target_vertical: "" # Optional finer-grained vertical
+
+# --- Tags (website search & browse) ---
+tags:
+  - agentic
+  - real-time
+  - event-driven
+  - flink
+  - flink-agents
+  - streaming
+  - kafka
+  - nifi
+  - flow-management
+  - monitoring
+  - agents
+  - cybersecurity
+  - honeypot
+
+# --- Relationships ---
+product_mapping: # Cloudera products used
+  - Cloudera Data in Motion
+  - Cloudera AI Inference Service
+  - Cloudera Flow Management
+# Stock hosted chat completions only — this blueprint does not fine-tune or ship domain-adapted weights.
+model_dependencies:
+  - openai-compatible chat via Cloudera AI Inference (stock model; inference-time prompts/tools/catalogs)
+
+# --- Provenance ---
+publisher: Ian Brooks # cloudera | partner-name
+# Catalog provenance (who published the blueprint) — not "model adaptation"/fine-tuning.
+source: Partner # Internal | Partner | NVIDIA Adaptation | Customer
+
+# --- Repository & assets ---
+public_github_link: "https://github.com/cloudera-applied-ai/AI_Blueprint_Real-Time-Agentic-DataOps"
+#private_github_link: "" # If applicable, original repo during development
+
+# --- Ownership ---
+maintainer_name: "Ian Brooks"
+
+# --- Dates ---
+date_created: "2025-06-09"
+date_updated: "2026-09-17"
+published_date: "2026-08-21" # Published date / last modified

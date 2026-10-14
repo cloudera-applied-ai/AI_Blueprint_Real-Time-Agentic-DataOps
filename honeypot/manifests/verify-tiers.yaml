@@ -1,0 +1,14 @@
+# Honeypot verify extensions — merged with workspace tiers via:
+#   ratatoskr verify --profile honeypot
+tiers:
+  quick:
+    steps:
+      - type: python
+        path: test/test_production_pipeline.py
+        description: Production pipeline topic routing and hot-path policy
+
+  nightly:
+    steps:
+      - type: python
+        path: test/test_production_pipeline.py
+        description: Production pipeline smoke (nightly placeholder)

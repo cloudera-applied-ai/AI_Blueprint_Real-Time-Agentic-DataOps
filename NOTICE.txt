@@ -1,0 +1,2618 @@
+================================================================================
+================================================================================
+
+         Third-Party Software for Real-Time Agentic DataOps
+
+--------------------------------------------------------------------------------
+
+The product or component covered by this notice file is subject to copyright owned by Cloudera, the Apache Software Foundation or other third parties, as applicable, and the copyright owner reserves all rights.
+
+The following notices and licenses apply to various third party software packages, including open source software packages, which are distributed with the product identified in this file or accompanying this file.  Such product (i) may not include all of the referenced third party software packages or include only a portion of a given package and (ii) may also include other components, which may contain additional third party software packages as identified in their separate respective notice files.
+
+To the extent required by the license associated with a third party software package, Cloudera, Inc. will provide a copy of the third party software package’s source code upon request and at a reasonable fee.  All requests for source code must be made in writing and mailed to "Cloudera, Inc., ATTN: Legal Dept.,5470 Great America Pkwy, Santa Clara, CA 95054" and include the following information: (i) the name and version number of the covered binary, (ii) name and the version number of the Cloudera product containing the covered binary, (iii) your name, (iv) your company or organization name (if applicable), (v) the license under which you are requesting the source code to be provided, and (vi) your return mailing and email address (if available).
+
+The following 3rd-party software packages may be used by or distributed with FlinkDockerWithAgents (RELENG-37863). Any information relevant to third-party vendors listed below are collected using common, reasonable means.
+
+Date generated: 2026-10-7
+
+Revision ID: fdd7523ab33d664bfbcd3c969c06826c65543301
+
+================================================================================
+================================================================================
+
+
+
+================================================================================
+
+                                  Dependencies
+
+================================================================================
+
+- @remix-run/router (1.23.3) [MIT]
+- @types/d3-color (3.1.3) [MIT]
+- @types/d3-drag (3.0.7) [MIT]
+- @types/d3-interpolate (3.0.4) [MIT]
+- @types/d3-selection (3.0.11) [MIT]
+- @types/d3-transition (3.0.9) [MIT]
+- @types/d3-zoom (3.0.8) [MIT]
+- @types/prop-types (15.7.15) [MIT]
+- @types/react (18.3.31) [MIT]
+- @types/react-dom (18.3.7) [MIT]
+- @xyflow/react (12.11.1) [MIT]
+- @xyflow/system (0.0.78) [MIT]
+- classcat (5.0.5) [MIT]
+- csstype (3.2.3) [MIT]
+- d3-color (3.1.0) [ISC]
+- d3-dispatch (3.0.1) [ISC]
+- d3-drag (3.0.0) [ISC]
+- d3-ease (3.0.1) [BSD-3-Clause]
+- d3-interpolate (3.0.1) [ISC]
+- d3-selection (3.0.0) [ISC]
+- d3-timer (3.0.1) [ISC]
+- d3-transition (3.0.1) [ISC]
+- d3-zoom (3.0.0) [ISC]
+- fastapi (0.115.0) [MIT, Apache-2.0]
+- ipwhois (1.2.0) [BSD-3-Clause, BSD-2-Clause]
+- js-tokens (4.0.0) [MIT]
+- kafka-python (2.0.2) [Apache-2.0, MIT]
+- loose-envify (1.4.0) [MIT]
+- openai (1.0.0) [Apache-2.0]
+- pandas (2.0.0) [BSD-3-Clause, Apache-2.0, BSD-2-Clause, TCL, 0BSD, Python-2.0, MIT, mit-nagy]
+- plotly (5.17.0) [MIT, cc-by-3.0-us]
+- prometheus-client (0.20.0) [Apache-2.0, BSD-2-Clause]
+- python-dotenv (1.0.0) [BSD-3-Clause]
+- PyYAML (6.0) [MIT]
+- react (18.3.1) [MIT]
+- react-dom (18.3.1) [MIT]
+- react-router (6.30.4) [MIT]
+- react-router-dom (6.30.4) [MIT]
+- requests (2.28.0) [MIT]
+- rich (13.0.0) [MIT]
+- scheduler (0.23.2) [MIT]
+- streamlit (1.28.0) [Apache-2.0, 0BSD, BSD-3-Clause, MIT]
+- typer (0.12.0) [MIT]
+- use-sync-external-store (1.6.0) [MIT]
+- uvicorn (0.30.0) [BSD-3-Clause]
+- zustand (4.5.7) [MIT]
+
+--------------------------------------------------------------------------------
+Package Title: @remix-run/router (1.23.3)
+
+Package Locator: npm+@remix-run/router$1.23.3
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Nested/Data-driven/Framework-agnostic Routing
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- dist/router.cjs.js
+  - Copyright (c)  Remix Software Inc.
+- dist/router.js
+  - Copyright (c)  Remix Software Inc.
+- dist/router.umd.js
+  - Copyright (c)  Remix Software Inc.
+- dist/router.umd.min.js
+  - Copyright (c)  Remix Software Inc.
+- LICENSE.md
+  - Copyright (c)  React Training LLC 2015-2019
+  - Copyright (c)  Remix Software Inc. 2020-2021
+  - Copyright (c)  Shopify Inc. 2022-2023
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  React Training LLC 2015-2019
+- Copyright (c)  Remix Software Inc.
+- Copyright (c)  Remix Software Inc. 2020-2021
+- Copyright (c)  Shopify Inc. 2022-2023
+
+* Package Info *
+
+Authors: mjijackson+npm@gmail.com
+Package Manager: NPM
+Project URL: https://github.com/remix-run/react-router#readme
+Package Download URL: https://registry.npmjs.org/@remix-run/router/-/router-1.23.3.tgz
+Dependency Path: react-router-dom > @remix-run/router > react-router-dom > react-router > @remix-run/router
+
+--------------------------------------------------------------------------------
+Package Title: @types/d3-color (3.1.3)
+
+Package Locator: npm+@types/d3-color$3.1.3
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+TypeScript definitions for d3-color
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c)  Microsoft Corporation.
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Microsoft Corporation.
+
+* Package Info *
+
+Authors: ts-npm-types@microsoft.com
+Package Manager: NPM
+Project URL: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/d3-color
+Package Download URL: https://registry.npmjs.org/@types/d3-color/-/d3-color-3.1.3.tgz
+Dependency Path: @xyflow/react > @xyflow/system > @types/d3-interpolate > @types/d3-color > @xyflow/react > @xyflow/system > @types/d3-zoom > @types/d3-interpolate > @types/d3-color
+
+--------------------------------------------------------------------------------
+Package Title: @types/d3-drag (3.0.7)
+
+Package Locator: npm+@types/d3-drag$3.0.7
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+TypeScript definitions for d3-drag
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c)  Microsoft Corporation.
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Microsoft Corporation.
+
+* Package Info *
+
+Authors: ts-npm-types@microsoft.com
+Package Manager: NPM
+Project URL: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/d3-drag
+Package Download URL: https://registry.npmjs.org/@types/d3-drag/-/d3-drag-3.0.7.tgz
+Dependency Path: @xyflow/react > @xyflow/system > @types/d3-drag
+
+--------------------------------------------------------------------------------
+Package Title: @types/d3-interpolate (3.0.4)
+
+Package Locator: npm+@types/d3-interpolate$3.0.4
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+TypeScript definitions for d3-interpolate
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c)  Microsoft Corporation.
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Microsoft Corporation.
+
+* Package Info *
+
+Authors: ts-npm-types@microsoft.com
+Package Manager: NPM
+Project URL: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/d3-interpolate
+Package Download URL: https://registry.npmjs.org/@types/d3-interpolate/-/d3-interpolate-3.0.4.tgz
+Dependency Path: @xyflow/react > @xyflow/system > @types/d3-interpolate > @xyflow/react > @xyflow/system > @types/d3-zoom > @types/d3-interpolate
+
+--------------------------------------------------------------------------------
+Package Title: @types/d3-selection (3.0.11)
+
+Package Locator: npm+@types/d3-selection$3.0.11
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+TypeScript definitions for d3-selection
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c)  Microsoft Corporation.
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Microsoft Corporation.
+
+* Package Info *
+
+Authors: ts-npm-types@microsoft.com
+Package Manager: NPM
+Project URL: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/d3-selection
+Package Download URL: https://registry.npmjs.org/@types/d3-selection/-/d3-selection-3.0.11.tgz
+Dependency Path: @xyflow/react > @xyflow/system > @types/d3-drag > @types/d3-selection > @xyflow/react > @xyflow/system > @types/d3-selection > @xyflow/react > @xyflow/system > @types/d3-transition > @types/d3-selection > @xyflow/react > @xyflow/system > @types/d3-zoom > @types/d3-selection
+
+--------------------------------------------------------------------------------
+Package Title: @types/d3-transition (3.0.9)
+
+Package Locator: npm+@types/d3-transition$3.0.9
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+TypeScript definitions for d3-transition
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c)  Microsoft Corporation.
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Microsoft Corporation.
+
+* Package Info *
+
+Authors: ts-npm-types@microsoft.com
+Package Manager: NPM
+Project URL: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/d3-transition
+Package Download URL: https://registry.npmjs.org/@types/d3-transition/-/d3-transition-3.0.9.tgz
+Dependency Path: @xyflow/react > @xyflow/system > @types/d3-transition
+
+--------------------------------------------------------------------------------
+Package Title: @types/d3-zoom (3.0.8)
+
+Package Locator: npm+@types/d3-zoom$3.0.8
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+TypeScript definitions for d3-zoom
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c)  Microsoft Corporation.
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Microsoft Corporation.
+
+* Package Info *
+
+Authors: ts-npm-types@microsoft.com
+Package Manager: NPM
+Project URL: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/d3-zoom
+Package Download URL: https://registry.npmjs.org/@types/d3-zoom/-/d3-zoom-3.0.8.tgz
+Dependency Path: @xyflow/react > @xyflow/system > @types/d3-zoom
+
+--------------------------------------------------------------------------------
+Package Title: @types/prop-types (15.7.15)
+
+Package Locator: npm+@types/prop-types$15.7.15
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+TypeScript definitions for prop-types
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c)  Microsoft Corporation.
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Microsoft Corporation.
+
+* Package Info *
+
+Authors: ts-npm-types@microsoft.com
+Package Manager: NPM
+Project URL: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/prop-types
+Package Download URL: https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.15.tgz
+Dependency Path: @types/react > @types/prop-types > @types/react-dom > @types/react > @types/prop-types > @xyflow/react > @types/react > @types/prop-types > @xyflow/react > @types/react-dom > @types/react > @types/prop-types > @xyflow/react > zustand > @types/react > @types/prop-types
+
+--------------------------------------------------------------------------------
+Package Title: @types/react (18.3.31)
+
+Package Locator: npm+@types/react$18.3.31
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+TypeScript definitions for react
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c)  Microsoft Corporation.
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Microsoft Corporation.
+
+* Package Info *
+
+Authors: ts-npm-types@microsoft.com
+Package Manager: NPM
+Project URL: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react
+Package Download URL: https://registry.npmjs.org/@types/react/-/react-18.3.31.tgz
+Dependency Path: @types/react > @types/react-dom > @types/react > @xyflow/react > @types/react > @xyflow/react > @types/react-dom > @types/react > @xyflow/react > zustand > @types/react
+
+--------------------------------------------------------------------------------
+Package Title: @types/react-dom (18.3.7)
+
+Package Locator: npm+@types/react-dom$18.3.7
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+TypeScript definitions for react-dom
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c)  Microsoft Corporation.
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Microsoft Corporation.
+
+* Package Info *
+
+Authors: ts-npm-types@microsoft.com
+Package Manager: NPM
+Project URL: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-dom
+Package Download URL: https://registry.npmjs.org/@types/react-dom/-/react-dom-18.3.7.tgz
+Dependency Path: @types/react-dom > @xyflow/react > @types/react-dom
+
+--------------------------------------------------------------------------------
+Package Title: @xyflow/react (12.11.1)
+
+Package Locator: npm+@xyflow/react$12.11.1
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+React Flow - A highly customizable React library for building node-based editors and interactive flow charts.
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2019-2025 webkid GmbH
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c) 2019-2025 webkid GmbH
+
+* Package Info *
+
+Authors: info@webkid.io, peter.gorzo@posteo.net
+Package Manager: NPM
+Project URL: https://reactflow.dev/
+Package Download URL: https://registry.npmjs.org/@xyflow/react/-/react-12.11.1.tgz
+Dependency Path: @xyflow/react
+
+--------------------------------------------------------------------------------
+Package Title: @xyflow/system (0.0.78)
+
+Package Locator: npm+@xyflow/system$0.0.78
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+xyflow core system that powers React Flow and Svelte Flow.
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2019-2025 webkid GmbH
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c) 2019-2025 webkid GmbH
+
+* Package Info *
+
+Authors: info@webkid.io, peter.gorzo@posteo.net
+Package Manager: NPM
+Project URL: https://github.com/xyflow/xyflow#readme
+Package Download URL: https://registry.npmjs.org/@xyflow/system/-/system-0.0.78.tgz
+Dependency Path: @xyflow/react > @xyflow/system
+
+--------------------------------------------------------------------------------
+Package Title: classcat (5.0.5)
+
+Package Locator: npm+classcat$5.0.5
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Build a class attribute string quickly.
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE.md
+  - Copyright (c)  Jorge Bucaran <<https://jorgebucaran.com>>
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Jorge Bucaran <<https://jorgebucaran.com>>
+
+* Package Info *
+
+Authors: mail@jorgebucaran.com
+Package Manager: NPM
+Project URL: https://github.com/jorgebucaran/classcat#readme
+Package Download URL: https://registry.npmjs.org/classcat/-/classcat-5.0.5.tgz
+Dependency Path: @xyflow/react > classcat
+
+--------------------------------------------------------------------------------
+Package Title: csstype (3.2.3)
+
+Package Locator: npm+csstype$3.2.3
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Strict TypeScript and Flow types for style based on MDN data
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2017-2018 Fredrik Nicol
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c) 2017-2018 Fredrik Nicol
+
+* Package Info *
+
+Authors: anders.ekdahl@gmail.com, fredrik.nicol@gmail.com
+Package Manager: NPM
+Project URL: https://github.com/frenic/csstype#readme
+Package Download URL: https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz
+Dependency Path: @types/react > csstype > @types/react-dom > @types/react > csstype > @xyflow/react > @types/react > csstype > @xyflow/react > @types/react-dom > @types/react > csstype > @xyflow/react > zustand > @types/react > csstype
+
+--------------------------------------------------------------------------------
+Package Title: d3-color (3.1.0)
+
+Package Locator: npm+d3-color$3.1.0
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Color spaces! RGB, HSL, Cubehelix, Lab and HCL (Lch).
+
+* Declared Licenses *
+ISC
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2010-2022 Mike Bostock
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+ISC
+- Copyright (c) 2010-2022 Mike Bostock
+
+* Package Info *
+
+Authors: fil@rezo.net, mike@ocks.org
+Package Manager: NPM
+Project URL: https://d3js.org/d3-color/
+Package Download URL: https://registry.npmjs.org/d3-color/-/d3-color-3.1.0.tgz
+Dependency Path: @xyflow/react > @xyflow/system > d3-interpolate > d3-color > @xyflow/react > @xyflow/system > d3-zoom > d3-interpolate > d3-color > @xyflow/react > @xyflow/system > d3-zoom > d3-transition > d3-color > @xyflow/react > @xyflow/system > d3-zoom > d3-transition > d3-interpolate > d3-color
+
+--------------------------------------------------------------------------------
+Package Title: d3-dispatch (3.0.1)
+
+Package Locator: npm+d3-dispatch$3.0.1
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Register named callbacks and call them with arguments.
+
+* Declared Licenses *
+ISC
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2010-2021 Mike Bostock
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+ISC
+- Copyright (c) 2010-2021 Mike Bostock
+
+* Package Info *
+
+Authors: fil@rezo.net, mike@ocks.org
+Package Manager: NPM
+Project URL: https://www.npmjs.com/package/d3-dispatch
+Package Download URL: https://registry.npmjs.org/d3-dispatch/-/d3-dispatch-3.0.1.tgz
+Dependency Path: @xyflow/react > @xyflow/system > d3-drag > d3-dispatch > @xyflow/react > @xyflow/system > d3-zoom > d3-dispatch > @xyflow/react > @xyflow/system > d3-zoom > d3-drag > d3-dispatch > @xyflow/react > @xyflow/system > d3-zoom > d3-transition > d3-dispatch
+
+--------------------------------------------------------------------------------
+Package Title: d3-drag (3.0.0)
+
+Package Locator: npm+d3-drag$3.0.0
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Drag and drop SVG, HTML or Canvas using mouse or touch input.
+
+* Declared Licenses *
+ISC
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2010-2021 Mike Bostock
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+ISC
+- Copyright (c) 2010-2021 Mike Bostock
+
+* Package Info *
+
+Authors: fil@rezo.net, mike@ocks.org
+Package Manager: NPM
+Project URL: https://www.npmjs.com/package/d3-drag
+Package Download URL: https://registry.npmjs.org/d3-drag/-/d3-drag-3.0.0.tgz
+Dependency Path: @xyflow/react > @xyflow/system > d3-drag > @xyflow/react > @xyflow/system > d3-zoom > d3-drag
+
+--------------------------------------------------------------------------------
+Package Title: d3-ease (3.0.1)
+
+Package Locator: npm+d3-ease$3.0.1
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Easing functions for smooth animation.
+
+* Declared Licenses *
+BSD-3-Clause
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2001 Robert Penner
+  - Copyright (c) 2010-2021 Mike Bostock
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+BSD-3-Clause
+- Copyright (c) 2010-2021 Mike Bostock
+- Copyright (c) 2001 Robert Penner
+
+* Package Info *
+
+Authors: fil@rezo.net, mike@ocks.org
+Package Manager: NPM
+Project URL: https://www.npmjs.com/package/d3-ease
+Package Download URL: https://registry.npmjs.org/d3-ease/-/d3-ease-3.0.1.tgz
+Dependency Path: @xyflow/react > @xyflow/system > d3-zoom > d3-transition > d3-ease
+
+--------------------------------------------------------------------------------
+Package Title: d3-interpolate (3.0.1)
+
+Package Locator: npm+d3-interpolate$3.0.1
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Interpolate numbers, colors, strings, arrays, objects, whatever!
+
+* Declared Licenses *
+ISC
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2010-2021 Mike Bostock
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+ISC
+- Copyright (c) 2010-2021 Mike Bostock
+
+* Package Info *
+
+Authors: fil@rezo.net, mike@ocks.org
+Package Manager: NPM
+Project URL: https://www.npmjs.com/package/d3-interpolate
+Package Download URL: https://registry.npmjs.org/d3-interpolate/-/d3-interpolate-3.0.1.tgz
+Dependency Path: @xyflow/react > @xyflow/system > d3-interpolate > @xyflow/react > @xyflow/system > d3-zoom > d3-interpolate > @xyflow/react > @xyflow/system > d3-zoom > d3-transition > d3-interpolate
+
+--------------------------------------------------------------------------------
+Package Title: d3-selection (3.0.0)
+
+Package Locator: npm+d3-selection$3.0.0
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Data-driven DOM manipulation: select elements and join them to data.
+
+* Declared Licenses *
+ISC
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2010-2021 Mike Bostock
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+ISC
+- Copyright (c) 2010-2021 Mike Bostock
+
+* Package Info *
+
+Authors: fil@rezo.net, mike@ocks.org
+Package Manager: NPM
+Project URL: https://d3js.org/d3-selection/
+Package Download URL: https://registry.npmjs.org/d3-selection/-/d3-selection-3.0.0.tgz
+Dependency Path: @xyflow/react > @xyflow/system > d3-drag > d3-selection > @xyflow/react > @xyflow/system > d3-selection > @xyflow/react > @xyflow/system > d3-zoom > d3-drag > d3-selection > @xyflow/react > @xyflow/system > d3-zoom > d3-selection > @xyflow/react > @xyflow/system > d3-zoom > d3-transition > d3-selection
+
+--------------------------------------------------------------------------------
+Package Title: d3-timer (3.0.1)
+
+Package Locator: npm+d3-timer$3.0.1
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+An efficient queue capable of managing thousands of concurrent animations.
+
+* Declared Licenses *
+ISC
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2010-2021 Mike Bostock
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+ISC
+- Copyright (c) 2010-2021 Mike Bostock
+
+* Package Info *
+
+Authors: fil@rezo.net, mike@ocks.org
+Package Manager: NPM
+Project URL: https://www.npmjs.com/package/d3-timer
+Package Download URL: https://registry.npmjs.org/d3-timer/-/d3-timer-3.0.1.tgz
+Dependency Path: @xyflow/react > @xyflow/system > d3-zoom > d3-transition > d3-timer
+
+--------------------------------------------------------------------------------
+Package Title: d3-transition (3.0.1)
+
+Package Locator: npm+d3-transition$3.0.1
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Animated transitions for D3 selections.
+
+* Declared Licenses *
+ISC
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2010-2021 Mike Bostock
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+ISC
+- Copyright (c) 2010-2021 Mike Bostock
+
+* Package Info *
+
+Authors: fil@rezo.net, mike@ocks.org
+Package Manager: NPM
+Project URL: https://d3js.org/d3-transition/
+Package Download URL: https://registry.npmjs.org/d3-transition/-/d3-transition-3.0.1.tgz
+Dependency Path: @xyflow/react > @xyflow/system > d3-zoom > d3-transition
+
+--------------------------------------------------------------------------------
+Package Title: d3-zoom (3.0.0)
+
+Package Locator: npm+d3-zoom$3.0.0
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Pan and zoom SVG, HTML or Canvas using mouse or touch input.
+
+* Declared Licenses *
+ISC
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2010-2021 Mike Bostock
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+ISC
+- Copyright (c) 2010-2021 Mike Bostock
+
+* Package Info *
+
+Authors: fil@rezo.net, mike@ocks.org
+Package Manager: NPM
+Project URL: https://d3js.org/d3-zoom/
+Package Download URL: https://registry.npmjs.org/d3-zoom/-/d3-zoom-3.0.0.tgz
+Dependency Path: @xyflow/react > @xyflow/system > d3-zoom
+
+--------------------------------------------------------------------------------
+Package Title: fastapi (0.115.0)
+
+Package Locator: pip+fastapi$0.115.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+FastAPI framework, high performance, easy to learn, fast to code, ready for production
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2018 Sebastián Ramírez
+--------------------------------------------------------------------------------
+
+* Other Licenses *
+Apache-2.0
+--------------------------------------------------------------------------------
+File matches:
+- fastapi/applications.py
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c) 2018 Sebastián Ramírez
+
+* Package Info *
+
+Authors: Sebastián Ramírez <tiangolo@gmail.com>
+Package Manager: Pip
+Project URL: https://pypi.org/project/fastapi/
+Package Download URL: https://files.pythonhosted.org/packages/7b/5e/bf0471f14bf6ebfbee8208148a3396d1a23298531a6cc10776c59f4c0f87/fastapi-0.115.0.tar.gz
+Dependency Path: fastapi
+
+--------------------------------------------------------------------------------
+Package Title: ipwhois (1.2.0)
+
+Package Locator: pip+ipwhois$1.2.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+Retrieve and parse whois data for IPv4 and IPv6 addresses.
+
+* Declared Licenses *
+BSD-3-Clause
+
+* Other Licenses *
+BSD-2-Clause
+--------------------------------------------------------------------------------
+File matches:
+- ipwhois/__init__.py
+  - Copyright (c) 2013-2020 Philip Hane
+- ipwhois/asn.py
+  - Copyright (c) 2013-2020 Philip Hane
+- ipwhois/exceptions.py
+  - Copyright (c) 2013-2020 Philip Hane
+- ipwhois/experimental.py
+  - Copyright (c) 2017-2019 Philip Hane
+- ipwhois/hr.py
+  - Copyright (c) 2013-2020 Philip Hane
+- ipwhois/ipwhois.py
+  - Copyright (c) 2013-2020 Philip Hane
+- ipwhois/net.py
+  - Copyright (c) 2013-2020 Philip Hane
+- ipwhois/nir.py
+  - Copyright (c) 2013-2020 Philip Hane
+- ipwhois/rdap.py
+  - Copyright (c) 2013-2020 Philip Hane
+- ipwhois/scripts/ipwhois_cli.py
+  - Copyright (c) 2013-2020 Philip Hane
+- ipwhois/scripts/ipwhois_utils_cli.py
+  - Copyright (c) 2013-2020 Philip Hane
+- ipwhois/utils.py
+  - Copyright (c) 2013-2020 Philip Hane
+- ipwhois/whois.py
+  - Copyright (c) 2013-2020 Philip Hane
+- LICENSE.txt
+  - Copyright (c) 2013-2020 Philip Hane
+--------------------------------------------------------------------------------
+
+* Copyrights *
+BSD-2-Clause
+- Copyright (c) 2013-2020 Philip Hane
+- Copyright (c) 2017-2019 Philip Hane
+
+* Package Info *
+
+Authors: secynic@gmail.com
+Package Manager: Pip
+Project URL: https://github.com/secynic/ipwhois
+Package Download URL: https://files.pythonhosted.org/packages/c7/d0/f459346b5ce9ab836f6a7661ba00351e39a9d52948ea41012b3b8f921987/ipwhois-1.2.0.tar.gz
+Dependency Path: ipwhois
+
+--------------------------------------------------------------------------------
+Package Title: js-tokens (4.0.0)
+
+Package Locator: npm+js-tokens$4.0.0
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Tiny JavaScript tokenizer.
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2014, 2015, 2016, 2017, 2018 Simon Lydell
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c) 2014, 2015, 2016, 2017, 2018 Simon Lydell
+
+* Package Info *
+
+Authors: simon.lydell@gmail.com
+Package Manager: NPM
+Project URL: https://github.com/lydell/js-tokens#readme
+Package Download URL: https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz
+Dependency Path: @xyflow/react > react > loose-envify > js-tokens > @xyflow/react > react-dom > loose-envify > js-tokens > @xyflow/react > react-dom > scheduler > loose-envify > js-tokens > react > loose-envify > js-tokens > react-dom > loose-envify > js-tokens > react-dom > react > loose-envify > js-tokens > react-dom > scheduler > loose-envify > js-tokens > react-router-dom > react-dom > loose-envify > js-tokens > react-router-dom > react-dom > scheduler > loose-envify > js-tokens > react-router-dom > react-router > react > loose-envify > js-tokens
+
+--------------------------------------------------------------------------------
+Package Title: kafka-python (2.0.2)
+
+Package Locator: pip+kafka-python$2.0.2
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+Pure Python client for Apache Kafka
+
+* Declared Licenses *
+Apache-2.0
+--------------------------------------------------------------------------------
+File matches:
+- kafka/record/_crc32c.py
+  - Copyright (c) 2007 Google Inc.
+- LICENSE
+  - Copyright (c) 2015 David Arthur
+- setup.py
+--------------------------------------------------------------------------------
+
+* Other Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- kafka/vendor/six.py
+  - Copyright (c) 2010-2017 Benjamin Peterson
+--------------------------------------------------------------------------------
+
+* Copyrights *
+Apache-2.0
+- Copyright (c) 2015 David Arthur
+- Copyright (c) 2007 Google Inc.
+MIT
+- Copyright (c) 2010-2017 Benjamin Peterson
+
+* Package Info *
+
+Authors: Dana Powers <dana.powers@gmail.com>
+Package Manager: Pip
+Project URL: https://pypi.org/project/kafka-python/
+Package Download URL: https://files.pythonhosted.org/packages/07/4c/2595fb5733c3ac01aef3dacce17ff07f7f3336d9f96548bcf723b9073e5c/kafka-python-2.0.2.tar.gz
+Dependency Path: kafka-python
+
+--------------------------------------------------------------------------------
+Package Title: loose-envify (1.4.0)
+
+Package Locator: npm+loose-envify$1.4.0
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Fast (and loose) selective `process.env` replacer using js-tokens instead of an AST
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2015 Andres Suarez <zertosh@gmail.com>
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c) 2015 Andres Suarez <zertosh@gmail.com>
+
+* Package Info *
+
+Authors: zertosh@gmail.com
+Package Manager: NPM
+Project URL: https://www.npmjs.com/package/loose-envify
+Package Download URL: https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz
+Dependency Path: @xyflow/react > react > loose-envify > @xyflow/react > react-dom > loose-envify > @xyflow/react > react-dom > scheduler > loose-envify > react > loose-envify > react-dom > loose-envify > react-dom > react > loose-envify > react-dom > scheduler > loose-envify > react-router-dom > react-dom > loose-envify > react-router-dom > react-dom > scheduler > loose-envify > react-router-dom > react-router > react > loose-envify
+
+--------------------------------------------------------------------------------
+Package Title: openai (1.0.0)
+
+Package Locator: pip+openai$1.0.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+The official Python library for the openai API
+
+* Declared Licenses *
+Apache-2.0
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2023 OpenAI
+--------------------------------------------------------------------------------
+
+* Copyrights *
+Apache-2.0
+- Copyright (c) 2023 OpenAI
+
+* Package Info *
+
+Authors: OpenAI <support@openai.com>
+Package Manager: Pip
+Project URL: https://pypi.org/project/openai/
+Package Download URL: https://files.pythonhosted.org/packages/32/92/559d5b2859950dd1f60f09e264b2f9749363c2cf6aa449698192d3dae98c/openai-1.0.0.tar.gz
+Dependency Path: openai
+
+--------------------------------------------------------------------------------
+Package Title: pandas (2.0.0)
+
+Package Locator: pip+pandas$2.0.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+Powerful data structures for data analysis, time series, and statistics
+
+* Declared Licenses *
+BSD-3-Clause, Apache-2.0, BSD-2-Clause, TCL, 0BSD, Python-2.0, MIT
+
+* BSD-3-Clause *
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2008-2011 AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team
+  - Copyright (c) 2011-2023 Open source contributors.
+- LICENSES/DATEUTIL_LICENSE
+  - Copyright (c) 2003-2011 Gustavo Niemeyer <gustavo@niemeyer.net>
+  - Copyright (c) 2012-2014 Tomi Pieviläinen <tomi.pievilainen@iki.fi>
+  - Copyright (c) 2014-2016 Yaron de Leeuw <me@jarondl.net>
+  - Copyright (c) 2015 Paul Ganssle <paul@ganssle.io>
+  - Copyright (c) 2015 dateutil contributors (see AUTHORS file)
+  - Copyright (c) 2017 Paul Ganssle <paul@ganssle.io>
+  - Copyright (c) 2017 dateutil contributors (see AUTHORS file)
+- LICENSES/NUMPY_LICENSE
+  - Copyright (c) 2005-2011 NumPy Developers.
+- LICENSES/OTHER
+  - Copyright (c) 2010 Albert Sweigart
+  - Copyright (c) 2010-2012 Archipel Asset Management AB.
+  - Copyright (c) 2012 Google Inc.
+- LICENSES/SCIPY_LICENSE
+  - Copyright (c) 2001, 2002 Enthought, Inc.
+  - Copyright (c) 2003-2012 SciPy Developers.
+- LICENSES/ULTRAJSON_LICENSE
+  - Copyright (c) 1988-1993 The Regents of the University of California.
+  - Copyright (c) 1994 Sun Microsystems, Inc.
+  - Copyright (c) 2007 Nick Galbreath -- nickg [at] modp [dot] com. All rights reserved.
+  - Copyright (c) 2011-2013 ESN Social Software AB and Jonas Tarnstrom
+- pandas.egg-info/PKG-INFO
+  - Copyright (c) 2008-2011 AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team
+  - Copyright (c) 2011-2023 Open source contributors.
+- pandas/_libs/src/parser/tokenizer.c
+  - Copyright (c) 2002 Michael Ringgaard. All rights reserved.
+  - Copyright (c) 2012 Lambda Foundry, Inc., except where noted
+- pandas/_libs/src/ujson/lib/ultrajson.h
+  - Copyright (c) 1988-1993 The Regents of the University of California.
+  - Copyright (c) 1994 Sun Microsystems, Inc.
+  - Copyright (c) 2007 Nick Galbreath -- nickg [at] modp [dot] com. All rights reserved.
+  - Copyright (c) 2011-2013 ESN Social Software AB and Jonas Tarnstrom
+- pandas/_libs/src/ujson/lib/ultrajsondec.c
+  - Copyright (c) 1988-1993 The Regents of the University of California.
+  - Copyright (c) 1994 Sun Microsystems, Inc.
+  - Copyright (c) 2007 Nick Galbreath -- nickg [at] modp [dot] com. All rights
+  - Copyright (c) 2011-2013 ESN Social Software AB and Jonas Tarnstrom
+- pandas/_libs/src/ujson/lib/ultrajsonenc.c
+  - Copyright (c) 1988-1993 The Regents of the University of California.
+  - Copyright (c) 1994 Sun Microsystems, Inc.
+  - Copyright (c) 2007 Nick Galbreath -- nickg [at] modp [dot] com. All rights
+  - Copyright (c) 2011-2013 ESN Social Software AB and Jonas Tarnstrom
+- pandas/_libs/src/ujson/python/JSONtoObj.c
+  - Copyright (c) 1988-1993 The Regents of the University of California.
+  - Copyright (c) 1994 Sun Microsystems, Inc.
+  - Copyright (c) 2007 Nick Galbreath -- nickg [at] modp [dot] com. All rights reserved.
+  - Copyright (c) 2011-2013 ESN Social Software AB and Jonas Tarnstrom
+- pandas/_libs/src/ujson/python/objToJSON.c
+  - Copyright (c) 1988-1993 The Regents of the University of California.
+  - Copyright (c) 1994 Sun Microsystems, Inc.
+  - Copyright (c) 2007 Nick Galbreath -- nickg [at] modp [dot] com. All rights
+  - Copyright (c) 2011-2013 ESN Social Software AB and Jonas Tarnstrom
+- pandas/_libs/src/ujson/python/ujson.c
+  - Copyright (c) 1988-1993 The Regents of the University of California.
+  - Copyright (c) 1994 Sun Microsystems, Inc.
+  - Copyright (c) 2007 Nick Galbreath -- nickg [at] modp [dot] com. All rights reserved.
+  - Copyright (c) 2011-2013 ESN Social Software AB and Jonas Tarnstrom
+- pandas/_libs/src/ujson/python/version.h
+  - Copyright (c) 1988-1993 The Regents of the University of California.
+  - Copyright (c) 1994 Sun Microsystems, Inc.
+  - Copyright (c) 2007 Nick Galbreath -- nickg [at] modp [dot] com. All rights reserved.
+  - Copyright (c) 2011-2013 ESN Social Software AB and Jonas Tarnstrom
+- pandas/util/version/__init__.py
+- PKG-INFO
+  - Copyright (c) 2008-2011 AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team
+  - Copyright (c) 2011-2023 Open source contributors.
+--------------------------------------------------------------------------------
+
+* Apache-2.0 *
+--------------------------------------------------------------------------------
+File matches:
+- LICENSES/DATEUTIL_LICENSE
+  - Copyright (c) 2003-2011 Gustavo Niemeyer <gustavo@niemeyer.net>
+  - Copyright (c) 2012-2014 Tomi Pieviläinen <tomi.pievilainen@iki.fi>
+  - Copyright (c) 2014-2016 Yaron de Leeuw <me@jarondl.net>
+  - Copyright (c) 2015 Paul Ganssle <paul@ganssle.io>
+  - Copyright (c) 2015 dateutil contributors (see AUTHORS file)
+  - Copyright (c) 2017 Paul Ganssle <paul@ganssle.io>
+  - Copyright (c) 2017 dateutil contributors (see AUTHORS file)
+- LICENSES/OTHER
+  - Copyright (c) 2010 Albert Sweigart
+  - Copyright (c) 2010-2012 Archipel Asset Management AB.
+  - Copyright (c) 2012 Google Inc.
+- LICENSES/PACKAGING_LICENSE
+  - Copyright (c)  Donald Stufft and individual contributors.
+- LICENSES/XARRAY_LICENSE
+  - Copyright (c) 2014-2019 xarray Developers
+- pandas/util/version/__init__.py
+--------------------------------------------------------------------------------
+
+* BSD-2-Clause *
+--------------------------------------------------------------------------------
+File matches:
+- AUTHORS.md
+  - Copyright (c)  Policy
+  - Copyright (c)  model. Each contributor maintains copyright
+  - Copyright (c)  of any single
+  - Copyright (c)  of the
+  - Copyright (c)  on,
+  - Copyright (c) 2008-2011 AQR Capital Management, LLC
+  - Copyright (c) 2011-2012 Lambda Foundry, Inc.
+  - Copyright (c) 2011-2012 PyData Development Team
+  - Copyright (c) 2012 PyData Development Team
+- LICENSES/OTHER
+  - Copyright (c) 2010 Albert Sweigart
+  - Copyright (c) 2010-2012 Archipel Asset Management AB.
+  - Copyright (c) 2012 Google Inc.
+- LICENSES/PACKAGING_LICENSE
+  - Copyright (c)  Donald Stufft and individual contributors.
+- pandas/_libs/src/inline_helper.h
+  - Copyright (c) 2016 PyData Development Team
+- pandas/_libs/src/parse_helper.h
+  - Copyright (c) 2016 PyData Development Team
+- pandas/_libs/src/parser/io.c
+  - Copyright (c) 2016 PyData Development Team
+- pandas/_libs/src/parser/io.h
+  - Copyright (c) 2016 PyData Development Team
+- pandas/_libs/src/skiplist.h
+  - Copyright (c) 2016 PyData Development Team
+- pandas/_libs/src/ujson/python/date_conversions.c
+  - Copyright (c) 2020 PyData Development Team
+- pandas/_libs/src/ujson/python/date_conversions.h
+  - Copyright (c) 2020 PyData Development Team
+- pandas/_libs/tslibs/src/datetime/np_datetime_strings.c
+  - Copyright (c) 2005-2011 NumPy Developers
+  - Copyright (c) 2011 by Enthought, Inc.
+  - Copyright (c) 2016 PyData Development Team
+- pandas/_libs/tslibs/src/datetime/np_datetime_strings.h
+  - Copyright (c) 2005-2011 NumPy Developers
+  - Copyright (c) 2011 by Enthought, Inc.
+  - Copyright (c) 2016 PyData Development Team
+- pandas/_libs/tslibs/src/datetime/np_datetime.c
+  - Copyright (c) 2005-2011 NumPy Developers
+  - Copyright (c) 2016 PyData Development Team
+- pandas/_libs/tslibs/src/datetime/np_datetime.h
+  - Copyright (c) 2005-2011 NumPy Developers
+  - Copyright (c) 2016 PyData Development Team
+--------------------------------------------------------------------------------
+
+* TCL *
+
+* 0BSD *
+
+* Python-2.0 *
+--------------------------------------------------------------------------------
+File matches:
+- LICENSES/PSF_LICENSE
+  - Copyright (c)  
+  - Copyright (c)  i.e., "Copyright (c)
+  - Copyright (c) 1991 - 1995 Stichting Mathematisch Centrum Amsterdam,
+  - Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 
+--------------------------------------------------------------------------------
+
+* MIT *
+--------------------------------------------------------------------------------
+File matches:
+- LICENSES/HAVEN_LICENSE
+  - Copyright (c) 2019 Hadley Wickham; RStudio; and Evan Miller
+- LICENSES/HAVEN_MIT
+- LICENSES/KLIB_LICENSE
+  - Copyright (c) 2008 Attractive Chaos <attractor@live.co.uk>
+- LICENSES/MUSL_LICENSE
+  - Copyright (c)  Some source modules may fall in
+  - Copyright (c)  comments are original works
+  - Copyright (c)  status.
+  - Copyright (c) 1993,2004 Sun Microsystems or
+  - Copyright (c) 1994 David Burren. It is licensed under a BSD license.
+  - Copyright (c) 2001-2008 Ville Laurikari and licensed
+  - Copyright (c) 2003-2009 Bruce D. Evans or
+  - Copyright (c) 2003-2009 Steven G. Kargl or
+  - Copyright (c) 2003-2011 David Schultz or
+  - Copyright (c) 2005-2014 Rich Felker, et al.
+  - Copyright (c) 2008 
+  - Copyright (c) 2008 Stephen L. Moshier
+  - Copyright (c) 2011 
+  - Copyright (c) 2011 Szabolcs Nagy and
+- LICENSES/PYUPGRADE_LICENSE
+  - Copyright (c) 2017 Anthony Sottile
+- LICENSES/SAS7BDAT_LICENSE
+  - Copyright (c) 2015 Jared Hobbs
+- pandas/_libs/src/klib/khash.h
+  - Copyright (c) 2008, 2009, 2011 by Attractive Chaos <attractor@live.co.uk>
+--------------------------------------------------------------------------------
+
+* Other Licenses *
+mit-nagy
+--------------------------------------------------------------------------------
+File matches:
+- LICENSES/MUSL_LICENSE
+  - Copyright (c)  Some source modules may fall in
+  - Copyright (c)  comments are original works
+  - Copyright (c)  status.
+  - Copyright (c) 1993,2004 Sun Microsystems or
+  - Copyright (c) 1994 David Burren. It is licensed under a BSD license.
+  - Copyright (c) 2001-2008 Ville Laurikari and licensed
+  - Copyright (c) 2003-2009 Bruce D. Evans or
+  - Copyright (c) 2003-2009 Steven G. Kargl or
+  - Copyright (c) 2003-2011 David Schultz or
+  - Copyright (c) 2005-2014 Rich Felker, et al.
+  - Copyright (c) 2008 
+  - Copyright (c) 2008 Stephen L. Moshier
+  - Copyright (c) 2011 
+  - Copyright (c) 2011 Szabolcs Nagy and
+--------------------------------------------------------------------------------
+
+* Copyrights *
+BSD-3-Clause
+- Copyright (c) 2008-2011 AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team
+- Copyright (c) 2011-2013 ESN Social Software AB and Jonas Tarnstrom
+- Copyright (c) 2007 Nick Galbreath -- nickg [at] modp [dot] com. All rights reserved.
+- Copyright (c) 1988-1993 The Regents of the University of California.
+- Copyright (c) 1994 Sun Microsystems, Inc.
+- Copyright (c) 2007 Nick Galbreath -- nickg [at] modp [dot] com. All rights
+- Copyright (c) 2010-2012 Archipel Asset Management AB.
+- Copyright (c) 2012 Google Inc.
+- Copyright (c) 2010 Albert Sweigart
+- Copyright (c) 2001, 2002 Enthought, Inc.
+- Copyright (c) 2003-2012 SciPy Developers.
+- Copyright (c) 2017 Paul Ganssle <paul@ganssle.io>
+- Copyright (c) 2017 dateutil contributors (see AUTHORS file)
+- Copyright (c) 2003-2011 Gustavo Niemeyer <gustavo@niemeyer.net>
+- Copyright (c) 2012-2014 Tomi Pieviläinen <tomi.pievilainen@iki.fi>
+- Copyright (c) 2014-2016 Yaron de Leeuw <me@jarondl.net>
+- Copyright (c) 2015 Paul Ganssle <paul@ganssle.io>
+- Copyright (c) 2015 dateutil contributors (see AUTHORS file)
+- Copyright (c) 2005-2011 NumPy Developers.
+- Copyright (c) 2012 Lambda Foundry, Inc., except where noted
+- Copyright (c) 2002 Michael Ringgaard. All rights reserved.
+- Copyright (c) 2011-2023 Open source contributors.
+Apache-2.0
+- Copyright (c) 2017 Paul Ganssle <paul@ganssle.io>
+- Copyright (c) 2014-2019 xarray Developers
+- Copyright (c)  Donald Stufft and individual contributors.
+- Copyright (c) 2017 dateutil contributors (see AUTHORS file)
+- Copyright (c) 2003-2011 Gustavo Niemeyer <gustavo@niemeyer.net>
+- Copyright (c) 2012-2014 Tomi Pieviläinen <tomi.pievilainen@iki.fi>
+- Copyright (c) 2014-2016 Yaron de Leeuw <me@jarondl.net>
+- Copyright (c) 2015 Paul Ganssle <paul@ganssle.io>
+- Copyright (c) 2015 dateutil contributors (see AUTHORS file)
+- Copyright (c) 2010-2012 Archipel Asset Management AB.
+- Copyright (c) 2012 Google Inc.
+- Copyright (c) 2010 Albert Sweigart
+BSD-2-Clause
+- Copyright (c) 2008-2011 AQR Capital Management, LLC
+- Copyright (c) 2016 PyData Development Team
+- Copyright (c) 2011 by Enthought, Inc.
+- Copyright (c) 2005-2011 NumPy Developers
+- Copyright (c)  Donald Stufft and individual contributors.
+- Copyright (c) 2020 PyData Development Team
+- Copyright (c) 2011-2012 Lambda Foundry, Inc.
+- Copyright (c) 2011-2012 PyData Development Team
+- Copyright (c)  Policy
+- Copyright (c)  model. Each contributor maintains copyright
+- Copyright (c)  of any single
+- Copyright (c)  of the
+- Copyright (c)  on,
+- Copyright (c) 2012 PyData Development Team
+- Copyright (c) 2010-2012 Archipel Asset Management AB.
+- Copyright (c) 2012 Google Inc.
+- Copyright (c) 2010 Albert Sweigart
+Python-2.0
+- Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010 
+- Copyright (c)  i.e., "Copyright (c)
+- Copyright (c)  
+- Copyright (c) 1991 - 1995 Stichting Mathematisch Centrum Amsterdam,
+MIT
+- Copyright (c) 2019 Hadley Wickham; RStudio; and Evan Miller
+- Copyright (c) 2008 Attractive Chaos <attractor@live.co.uk>
+- Copyright (c) 2008, 2009, 2011 by Attractive Chaos <attractor@live.co.uk>
+- Copyright (c) 2005-2014 Rich Felker, et al.
+- Copyright (c) 2001-2008 Ville Laurikari and licensed
+- Copyright (c) 1993,2004 Sun Microsystems or
+- Copyright (c) 2003-2011 David Schultz or
+- Copyright (c) 2003-2009 Steven G. Kargl or
+- Copyright (c) 2003-2009 Bruce D. Evans or
+- Copyright (c) 2008 Stephen L. Moshier
+- Copyright (c) 2008 
+- Copyright (c) 1994 David Burren. It is licensed under a BSD license.
+- Copyright (c) 2011 
+- Copyright (c) 2011 Szabolcs Nagy and
+- Copyright (c)  status.
+- Copyright (c)  comments are original works
+- Copyright (c)  Some source modules may fall in
+- Copyright (c) 2015 Jared Hobbs
+- Copyright (c) 2017 Anthony Sottile
+mit-nagy
+- Copyright (c) 2005-2014 Rich Felker, et al.
+- Copyright (c) 2001-2008 Ville Laurikari and licensed
+- Copyright (c) 1993,2004 Sun Microsystems or
+- Copyright (c) 2003-2011 David Schultz or
+- Copyright (c) 2003-2009 Steven G. Kargl or
+- Copyright (c) 2003-2009 Bruce D. Evans or
+- Copyright (c) 2008 Stephen L. Moshier
+- Copyright (c) 2008 
+- Copyright (c) 1994 David Burren. It is licensed under a BSD license.
+- Copyright (c) 2011 
+- Copyright (c) 2011 Szabolcs Nagy and
+- Copyright (c)  status.
+- Copyright (c)  comments are original works
+- Copyright (c)  Some source modules may fall in
+
+* Package Info *
+
+Authors: The Pandas Development Team <pandas-dev@python.org>
+Package Manager: Pip
+Project URL: https://pypi.org/project/pandas/
+Package Download URL: https://files.pythonhosted.org/packages/9f/12/0b6bdd627b99cb10816956c1047b0733ef33b61a84e3420faf4d3202df06/pandas-2.0.0.tar.gz
+Dependency Path: pandas
+
+--------------------------------------------------------------------------------
+Package Title: plotly (5.17.0)
+
+Package Locator: pip+plotly$5.17.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+An open-source interactive data visualization library for Python
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- _plotly_utils/png.py
+  - Copyright (c) 2006 Johann C. Rocholl <johann@browsershots.org>
+  - Copyright (c) 2006 Nicko van Someren <nicko@nicko.org>
+  - Copyright (c) 2009 David Jones <drj@pobox.com>
+- jupyterlab_plotly/labextension/package.json
+- LICENSE.txt
+  - Copyright (c) 2016-2018 Plotly, Inc
+- PKG-INFO
+  - Copyright (c)  and Licenses
+  - Copyright (c) 2019 Plotly, Inc.
+- plotly.egg-info/PKG-INFO
+  - Copyright (c)  and Licenses
+  - Copyright (c) 2019 Plotly, Inc.
+- README.md
+  - Copyright (c)  and Licenses
+  - Copyright (c) 2019 Plotly, Inc.
+- setup.py
+--------------------------------------------------------------------------------
+
+* Other Licenses *
+cc-by-3.0-us
+--------------------------------------------------------------------------------
+File matches:
+- _plotly_utils/colors/carto.py
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c) 2016-2018 Plotly, Inc
+- Copyright (c)  and Licenses
+- Copyright (c) 2019 Plotly, Inc.
+- Copyright (c) 2006 Johann C. Rocholl <johann@browsershots.org>
+- Copyright (c) 2009 David Jones <drj@pobox.com>
+- Copyright (c) 2006 Nicko van Someren <nicko@nicko.org>
+
+* Package Info *
+
+Authors: Chris P <chris@plot.ly>
+Package Manager: Pip
+Project URL: https://pypi.org/project/plotly/
+Package Download URL: https://files.pythonhosted.org/packages/c7/bd/6516a9f3105cf15bf5892b2eec6eac4dd1645a4b1ed82ae86e0a044dab36/plotly-5.17.0.tar.gz
+Dependency Path: plotly
+
+--------------------------------------------------------------------------------
+Package Title: prometheus-client (0.20.0)
+
+Package Locator: pip+prometheus-client$0.20.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+# Prometheus Python Client
+
+The official Python client for [Prometheus](https://prometheus.io).
+
+## Installation
+
+```
+pip install prometheus-client
+```
+
+This package can be found on [PyPI](https://pypi.python.org/pypi/prometheus_client).
+
+## Documentation
+
+Documentation is available on https://prometheus.github.io/client_python
+
+## Links
+
+* [Releases](https://github.com/prometheus/client_python/releases): The releases page shows the history of the project and acts as a changelog.
+* [PyPI](https://pypi.python.org/pypi/prometheus_client)
+
+
+* Declared Licenses *
+Apache-2.0
+
+* Other Licenses *
+BSD-2-Clause
+
+* Copyrights *
+BSD-2-Clause
+- Copyright (c) 2005-2016 Michele Simionato
+
+* Package Info *
+
+Authors: brian.brazil@robustperception.io
+Package Manager: Pip
+Project URL: https://github.com/prometheus/client_python
+Package Download URL: https://files.pythonhosted.org/packages/3d/39/3be07741a33356127c4fe633768ee450422c1231c6d34b951fee1458308d/prometheus_client-0.20.0.tar.gz
+Dependency Path: prometheus-client
+* Notice File(s) *
+NOTICE
+Prometheus instrumentation library for Python applications
+Copyright 2015 The Prometheus Authors
+
+This product bundles decorator 4.0.10 which is available under a "2-clause BSD"
+license. For details, see prometheus_client/decorator.py.
+
+
+--------------------------------------------------------------------------------
+Package Title: python-dotenv (1.0.0)
+
+Package Locator: pip+python-dotenv$1.0.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+Read key-value pairs from a .env file and set them as environment variables
+
+* Declared Licenses *
+BSD-3-Clause
+--------------------------------------------------------------------------------
+File matches:
+- docs/license.md
+  - Copyright (c) 2014 Saurabh Kumar (python-dotenv), 2013, Ted Tieken (django-dotenv-rw), 2013, Jacob Kaplan-Moss (django-dotenv)
+- LICENSE
+  - Copyright (c) 2014 Saurabh Kumar (python-dotenv), 2013, Ted Tieken (django-dotenv-rw), 2013, Jacob Kaplan-Moss (django-dotenv)
+- setup.py
+--------------------------------------------------------------------------------
+
+* Copyrights *
+BSD-3-Clause
+- Copyright (c) 2014 Saurabh Kumar (python-dotenv), 2013, Ted Tieken (django-dotenv-rw), 2013, Jacob Kaplan-Moss (django-dotenv)
+
+* Package Info *
+
+Authors: Saurabh Kumar <me+github@saurabh-kumar.com>
+Package Manager: Pip
+Project URL: https://pypi.org/project/python-dotenv/
+Package Download URL: https://files.pythonhosted.org/packages/31/06/1ef763af20d0572c032fa22882cfbfb005fba6e7300715a37840858c919e/python-dotenv-1.0.0.tar.gz
+Dependency Path: python-dotenv
+
+--------------------------------------------------------------------------------
+Package Title: PyYAML (6.0)
+
+Package Locator: pip+pyyaml$6.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+YAML parser and emitter for Python
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2006-2016 Kirill Simonov
+  - Copyright (c) 2017-2021 Ingy döt Net
+- setup.py
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c) 2017-2021 Ingy döt Net
+- Copyright (c) 2006-2016 Kirill Simonov
+
+* Package Info *
+
+Authors: xi@resolvent.net
+Package Manager: Pip
+Project URL: https://pyyaml.org/
+Package Download URL: https://files.pythonhosted.org/packages/36/2b/61d51a2c4f25ef062ae3f74576b01638bebad5e045f747ff12643df63844/PyYAML-6.0.tar.gz
+Dependency Path: pyyaml
+
+--------------------------------------------------------------------------------
+Package Title: react (18.3.1)
+
+Package Locator: npm+react$18.3.1
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+React is a JavaScript library for building user interfaces.
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- cjs/react-jsx-dev-runtime.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-jsx-dev-runtime.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-jsx-dev-runtime.profiling.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-jsx-runtime.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-jsx-runtime.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-jsx-runtime.profiling.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react.shared-subset.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react.shared-subset.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- LICENSE
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- package.json
+- umd/react.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/react.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/react.profiling.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Facebook, Inc. and its affiliates.
+
+* Package Info *
+
+Authors: opensource+npm@fb.com, react-core@meta.com
+Package Manager: NPM
+Project URL: https://react.dev/
+Package Download URL: https://registry.npmjs.org/react/-/react-18.3.1.tgz
+Dependency Path: @xyflow/react > react > @xyflow/react > react-dom > react > @xyflow/react > zustand > react > @xyflow/react > zustand > use-sync-external-store > react > react > react-dom > react > react-router-dom > react > react-router-dom > react-dom > react > react-router-dom > react-router > react
+
+--------------------------------------------------------------------------------
+Package Title: react-dom (18.3.1)
+
+Package Locator: npm+react-dom$18.3.1
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+React package for working with the DOM.
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- cjs/react-dom-server-legacy.browser.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom-server-legacy.browser.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom-server-legacy.node.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom-server-legacy.node.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom-server.browser.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom-server.browser.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom-server.node.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom-server.node.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom-test-utils.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom-test-utils.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/react-dom.profiling.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- LICENSE
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- package.json
+- umd/react-dom-server-legacy.browser.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/react-dom-server-legacy.browser.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/react-dom-server.browser.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/react-dom-server.browser.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/react-dom-test-utils.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/react-dom-test-utils.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/react-dom.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/react-dom.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/react-dom.profiling.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Facebook, Inc. and its affiliates.
+
+* Package Info *
+
+Authors: opensource+npm@fb.com, react-core@meta.com
+Package Manager: NPM
+Project URL: https://react.dev/
+Package Download URL: https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz
+Dependency Path: @xyflow/react > react-dom > react-dom > react-router-dom > react-dom
+
+--------------------------------------------------------------------------------
+Package Title: react-router (6.30.4)
+
+Package Locator: npm+react-router$6.30.4
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Declarative routing for React
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- dist/index.js
+  - Copyright (c)  Remix Software Inc.
+- dist/main.js
+  - Copyright (c)  Remix Software Inc.
+- dist/react-router.development.js
+  - Copyright (c)  Remix Software Inc.
+- dist/react-router.production.min.js
+  - Copyright (c)  Remix Software Inc.
+- dist/umd/react-router.development.js
+  - Copyright (c)  Remix Software Inc.
+- dist/umd/react-router.production.min.js
+  - Copyright (c)  Remix Software Inc.
+- LICENSE.md
+  - Copyright (c)  React Training LLC 2015-2019
+  - Copyright (c)  Remix Software Inc. 2020-2021
+  - Copyright (c)  Shopify Inc. 2022-2023
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  React Training LLC 2015-2019
+- Copyright (c)  Remix Software Inc.
+- Copyright (c)  Remix Software Inc. 2020-2021
+- Copyright (c)  Shopify Inc. 2022-2023
+
+* Package Info *
+
+Authors: matt@brophy.org, mjijackson+npm@gmail.com
+Package Manager: NPM
+Project URL: https://www.npmjs.com/package/react-router
+Package Download URL: https://registry.npmjs.org/react-router/-/react-router-6.30.4.tgz
+Dependency Path: react-router-dom > react-router
+
+--------------------------------------------------------------------------------
+Package Title: react-router-dom (6.30.4)
+
+Package Locator: npm+react-router-dom$6.30.4
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+Declarative routing for React web applications
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- dist/index.js
+  - Copyright (c)  Remix Software Inc.
+- dist/main.js
+  - Copyright (c)  Remix Software Inc.
+- dist/react-router-dom.development.js
+  - Copyright (c)  Remix Software Inc.
+- dist/react-router-dom.production.min.js
+  - Copyright (c)  Remix Software Inc.
+- dist/umd/react-router-dom.development.js
+  - Copyright (c)  Remix Software Inc.
+- dist/umd/react-router-dom.production.min.js
+  - Copyright (c)  Remix Software Inc.
+- LICENSE.md
+  - Copyright (c)  React Training LLC 2015-2019
+  - Copyright (c)  Remix Software Inc. 2020-2021
+  - Copyright (c)  Shopify Inc. 2022-2023
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  React Training LLC 2015-2019
+- Copyright (c)  Remix Software Inc.
+- Copyright (c)  Remix Software Inc. 2020-2021
+- Copyright (c)  Shopify Inc. 2022-2023
+
+* Package Info *
+
+Authors: matt@brophy.org, mjijackson+npm@gmail.com
+Package Manager: NPM
+Project URL: https://github.com/remix-run/react-router#readme
+Package Download URL: https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.30.4.tgz
+Dependency Path: react-router-dom
+
+--------------------------------------------------------------------------------
+Package Title: requests (2.28.0)
+
+Package Locator: pip+requests$2.28.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+# Requests
+
+**Requests** is a simple, yet elegant, HTTP library.
+
+```python
+>>> import requests
+>>> r = requests.get('https://httpbin.org/basic-auth/user/pass', auth=('user', 'pass'))
+>>> r.status_code
+200
+>>> r.headers['content-type']
+'application/json; charset=utf8'
+>>> r.encoding
+'utf-8'
+>>> r.text
+'{"authenticated": true, ...'
+>>> r.json()
+{'authenticated': True, ...}
+```
+
+Requests allows you to send HTTP/1.1 requests extremely easily. There’s no need to manually add query strings to your URLs, or to form-encode your `PUT` & `POST` data — but nowadays, just use the `json` method!
+
+Requests is one of the most downloaded Python packages today, pulling in around `30M downloads / week`— according to GitHub, Requests is currently [depended upon](https://github.com/psf/requests/network/dependents?package_id=UGFja2FnZS01NzA4OTExNg%3D%3D) by `1,000,000+` repositories. You may certainly put your trust in this code.
+
+[![Downloads](https://pepy.tech/badge/requests/month)](https://pepy.tech/project/requests)
+[![Supported Versions](https://img.shields.io/pypi/pyversions/requests.svg)](https://pypi.org/project/requests)
+[![Contributors](https://img.shields.io/github/contributors/psf/requests.svg)](https://github.com/psf/requests/graphs/contributors)
+
+## Installing Requests and Supported Versions
+
+Requests is available on PyPI:
+
+```console
+$ python -m pip install requests
+```
+
+Requests officially supports Python 3.7+.
+
+## Supported Features & Best–Practices
+
+Requests is ready for the demands of building robust and reliable HTTP–speaking applications, for the needs of today.
+
+- Keep-Alive & Connection Pooling
+- International Domains and URLs
+- Sessions with Cookie Persistence
+- Browser-style TLS/SSL Verification
+- Basic & Digest Authentication
+- Familiar `dict`–like Cookies
+- Automatic Content Decompression and Decoding
+- Multi-part File Uploads
+- SOCKS Proxy Support
+- Connection Timeouts
+- Streaming Downloads
+- Automatic honoring of `.netrc`
+- Chunked HTTP Requests
+
+## API Reference and User Guide available on [Read the Docs](https://requests.readthedocs.io)
+
+[![Read the Docs](https://raw.githubusercontent.com/psf/requests/main/ext/ss.png)](https://requests.readthedocs.io)
+
+## Cloning the repository
+
+When cloning the Requests repository, you may need to add the `-c
+fetch.fsck.badTimezone=ignore` flag to avoid an error about a bad commit (see
+[this issue](https://github.com/psf/requests/issues/2690) for more background):
+
+```shell
+git clone -c fetch.fsck.badTimezone=ignore https://github.com/psf/requests.git
+```
+
+You can also apply this setting to your global Git config:
+
+```shell
+git config --global fetch.fsck.badTimezone ignore
+```
+
+---
+
+[![Kenneth Reitz](https://raw.githubusercontent.com/psf/requests/main/ext/kr.png)](https://kennethreitz.org) [![Python Software Foundation](https://raw.githubusercontent.com/psf/requests/main/ext/psf.png)](https://www.python.org/psf)
+
+
+
+
+* Other Licenses *
+MIT
+
+* Copyrights *
+MIT
+- Copyright (c) 2008-2011 Andrey Petrov and contributors (see CONTRIBUTORS.txt),
+
+* Package Info *
+
+Authors: me@kennethreitz.org
+Package Manager: Pip
+Project URL: https://requests.readthedocs.io
+Package Download URL: https://files.pythonhosted.org/packages/e9/23/384d9953bb968731212dc37af87cb75a885dc48e0615bd6a303577c4dc4b/requests-2.28.0.tar.gz
+Dependency Path: requests
+* Notice File(s) *
+NOTICE
+Requests
+Copyright 2019 Kenneth Reitz
+
+
+--------------------------------------------------------------------------------
+Package Title: rich (13.0.0)
+
+Package Locator: pip+rich$13.0.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2020 Will McGugan
+- rich/_spinners.py
+  - Copyright (c)  Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c) 2020 Will McGugan
+- Copyright (c)  Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+
+* Package Info *
+
+Authors: willmcgugan@gmail.com
+Package Manager: Pip
+Project URL: https://pypi.org/project/rich/
+Package Download URL: https://files.pythonhosted.org/packages/b4/b9/f735d18e35aea71b6516d2970d268fccf3978f4848156ed20cc858c287bd/rich-13.0.0.tar.gz
+Dependency Path: rich
+
+--------------------------------------------------------------------------------
+Package Title: scheduler (0.23.2)
+
+Package Locator: npm+scheduler$0.23.2
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Cooperative scheduler for the browser environment.
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- cjs/scheduler-unstable_mock.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/scheduler-unstable_mock.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/scheduler-unstable_post_task.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/scheduler-unstable_post_task.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/scheduler.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- cjs/scheduler.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- LICENSE
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- package.json
+- umd/scheduler-unstable_mock.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/scheduler-unstable_mock.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/scheduler.development.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/scheduler.production.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+- umd/scheduler.profiling.min.js
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Facebook, Inc. and its affiliates.
+
+* Package Info *
+
+Authors: opensource+npm@fb.com, react-core@meta.com
+Package Manager: NPM
+Project URL: https://react.dev/
+Package Download URL: https://registry.npmjs.org/scheduler/-/scheduler-0.23.2.tgz
+Dependency Path: @xyflow/react > react-dom > scheduler > react-dom > scheduler > react-router-dom > react-dom > scheduler
+
+--------------------------------------------------------------------------------
+Package Title: streamlit (1.28.0)
+
+Package Locator: pip+streamlit$1.28.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+A faster way to build and share data apps
+
+* Declared Licenses *
+Apache-2.0
+--------------------------------------------------------------------------------
+File matches:
+- PKG-INFO
+- setup.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit.egg-info/PKG-INFO
+- streamlit/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/__main__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/case_converters.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/code_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/color_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/column_config.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/commands/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/commands/execution_control.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/commands/page_config.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/commands/query_params.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/components/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/components/v1/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/components/v1/component_arrow.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/components/v1/components.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/config_option.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/config_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/config.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/connections/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/connections/base_connection.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/connections/snowflake_connection.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/connections/snowpark_connection.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/connections/sql_connection.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/connections/util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/cursor.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/delta_generator.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/deprecation_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/development.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/echo.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/alert.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/altair_utils.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/arrow_altair.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/arrow_vega_lite.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/arrow.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/balloons.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/bokeh_chart.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/code.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/deck_gl_json_chart.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/doc_string.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/empty.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/exception.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/form.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/graphviz_chart.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/heading.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/iframe.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/image.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/json.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/layouts.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/lib/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/lib/column_config_utils.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/lib/column_types.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/lib/dicttools.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/lib/mutable_status_container.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/lib/pandas_styler_utils.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/lib/streamlit_plotly_theme.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/map.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/markdown.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/media.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/metric.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/plotly_chart.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/progress.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/pyplot.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/snow.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/spinner.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/text.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/toast.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/utils.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/button.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/camera_input.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/chat.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/checkbox.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/color_picker.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/data_editor.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/file_uploader.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/multiselect.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/number_input.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/radio.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/select_slider.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/selectbox.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/slider.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/text_widgets.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/widgets/time_widgets.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/elements/write.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/emojis.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/env_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/error_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/errors.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/external/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/external/langchain/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/external/langchain/streamlit_callback_handler.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/file_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/folder_black_list.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/git_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/hello/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/hello/Hello.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/hello/pages/0_Animation_Demo.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/hello/pages/1_Plotting_Demo.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/hello/pages/2_Mapping_Demo.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/hello/pages/3_DataFrame_Demo.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/hello/utils.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/js_number.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/logger.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/net_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/platform.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/proto/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/app_session.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/cache_data_api.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/cache_errors.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/cache_resource_api.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/cache_type.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/cache_utils.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/cached_message_replay.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/hashing.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/storage/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/storage/cache_storage_protocol.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/storage/dummy_cache_storage.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/storage/in_memory_cache_storage_wrapper.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/caching/storage/local_disk_cache_storage.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/connection_factory.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/credentials.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/forward_msg_cache.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/forward_msg_queue.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/legacy_caching/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/legacy_caching/caching.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/legacy_caching/hashing.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/media_file_manager.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/media_file_storage.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/memory_media_file_storage.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/memory_session_storage.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/memory_uploaded_file_manager.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/metrics_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/runtime_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/runtime.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/script_data.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/scriptrunner/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/scriptrunner/magic_funcs.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/scriptrunner/magic.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/scriptrunner/script_cache.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/scriptrunner/script_requests.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/scriptrunner/script_run_context.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/scriptrunner/script_runner.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/secrets.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/session_manager.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/state/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/state/common.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/state/safe_session_state.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/state/session_state_proxy.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/state/session_state.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/state/widgets.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/stats.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/uploaded_file_manager.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/runtime/websocket_session_manager.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/source_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/static/static/js/7323.2b864eac.chunk.js.LICENSE.txt
+  - Copyright (c)  JS Foundation and other contributors
+  - Copyright (c)  Microsoft Corporation.
+  - Copyright (c)  OpenJS Foundation and other contributors
+  - Copyright (c)  jQuery Foundation and other contributors
+  - Copyright (c) 2010 Three Dub Media - http://threedubmedia.com
+  - Copyright (c) 2012-2017 Kirollos Risk (http://kiro.me)
+  - Copyright (c) 2016 Jorik Tangelder;
+- streamlit/string_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/temporary_directory.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/testing/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/testing/element_tree.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/testing/local_script_runner.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/testing/script_interactions.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/testing/v1/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/testing/v1/app_test.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/testing/v1/element_tree.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/testing/v1/local_script_runner.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/testing/v1/util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/type_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/url_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/user_info.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/version.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/watcher/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/watcher/event_based_path_watcher.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/watcher/local_sources_watcher.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/watcher/path_watcher.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/watcher/polling_path_watcher.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/watcher/util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/bootstrap.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/cache_storage_manager_config.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/cli.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/server/__init__.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/server/app_static_file_handler.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/server/browser_websocket_handler.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/server/component_request_handler.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/server/media_file_handler.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/server/routes.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/server/server_util.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/server/server.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/server/stats_request_handler.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/server/upload_file_request_handler.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- streamlit/web/server/websocket_headers.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- tests/testutil.py
+  - Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+--------------------------------------------------------------------------------
+
+* Other Licenses *
+0BSD, BSD-3-Clause, MIT
+
+* 0BSD *
+--------------------------------------------------------------------------------
+File matches:
+- streamlit/static/static/js/5733.b3b2020b.chunk.js.LICENSE.txt
+  - Copyright (c)  Microsoft Corporation.
+- streamlit/static/static/js/7323.2b864eac.chunk.js.LICENSE.txt
+  - Copyright (c)  JS Foundation and other contributors
+  - Copyright (c)  Microsoft Corporation.
+  - Copyright (c)  OpenJS Foundation and other contributors
+  - Copyright (c)  jQuery Foundation and other contributors
+  - Copyright (c) 2010 Three Dub Media - http://threedubmedia.com
+  - Copyright (c) 2012-2017 Kirollos Risk (http://kiro.me)
+  - Copyright (c) 2016 Jorik Tangelder;
+--------------------------------------------------------------------------------
+
+* BSD-3-Clause *
+--------------------------------------------------------------------------------
+File matches:
+- streamlit/vendor/ipython/modified_sys_path.py
+  - Copyright (c) 2001 Janko Hauser <jhauser@zscout.de>
+  - Copyright (c) 2001 Nathaniel Gray <n8gray@caltech.edu>
+  - Copyright (c) 2001-2007 Fernando Perez <fernando.perez@colorado.edu>
+  - Copyright (c) 2008 Present, IPython Development Team
+- streamlit/vendor/pympler/asizeof.py
+  - Copyright (c) 2002-2022 ProphICy Semiconductor, Inc.
+--------------------------------------------------------------------------------
+
+* MIT *
+--------------------------------------------------------------------------------
+File matches:
+- streamlit/static/static/js/main.3afeb7b0.js.LICENSE.txt
+  - Copyright (c)  Facebook, Inc. and its affiliates.
+  - Copyright (c)  JS Foundation and other contributors
+  - Copyright (c)  Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+  - Copyright (c)  OpenJS Foundation and other contributors <https://openjsf.org/>
+  - Copyright (c) 2014 present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE
+  - Copyright (c) 2018 Jed Watson.
+--------------------------------------------------------------------------------
+
+* Copyrights *
+Apache-2.0
+- Copyright (c)  Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+- Copyright (c) 2012-2017 Kirollos Risk (http://kiro.me)
+- Copyright (c)  JS Foundation and other contributors
+- Copyright (c)  OpenJS Foundation and other contributors
+- Copyright (c)  jQuery Foundation and other contributors
+- Copyright (c) 2010 Three Dub Media - http://threedubmedia.com
+- Copyright (c)  Microsoft Corporation.
+- Copyright (c) 2016 Jorik Tangelder;
+0BSD
+- Copyright (c)  Microsoft Corporation.
+- Copyright (c) 2012-2017 Kirollos Risk (http://kiro.me)
+- Copyright (c)  JS Foundation and other contributors
+- Copyright (c)  OpenJS Foundation and other contributors
+- Copyright (c)  jQuery Foundation and other contributors
+- Copyright (c) 2010 Three Dub Media - http://threedubmedia.com
+- Copyright (c) 2016 Jorik Tangelder;
+BSD-3-Clause
+- Copyright (c) 2008 Present, IPython Development Team
+- Copyright (c) 2001-2007 Fernando Perez <fernando.perez@colorado.edu>
+- Copyright (c) 2001 Janko Hauser <jhauser@zscout.de>
+- Copyright (c) 2001 Nathaniel Gray <n8gray@caltech.edu>
+- Copyright (c) 2002-2022 ProphICy Semiconductor, Inc.
+MIT
+- Copyright (c) 2018 Jed Watson.
+- Copyright (c) 2014 present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE
+- Copyright (c)  OpenJS Foundation and other contributors <https://openjsf.org/>
+- Copyright (c)  Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+- Copyright (c)  Facebook, Inc. and its affiliates.
+- Copyright (c)  JS Foundation and other contributors
+
+* Package Info *
+
+Authors: Snowflake Inc <hello@streamlit.io>
+Package Manager: Pip
+Project URL: https://pypi.org/project/streamlit/
+Package Download URL: https://files.pythonhosted.org/packages/0a/49/ba8c452b062a49b2d870d2053536b45067a9f3f693a5d8a3b37bb0bf68d6/streamlit-1.28.0.tar.gz
+Dependency Path: streamlit
+
+--------------------------------------------------------------------------------
+Package Title: typer (0.12.0)
+
+Package Locator: pip+typer$0.12.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+Typer, build great CLIs. Easy to code. Based on Python type hints.
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2019 Sebastián Ramírez
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c) 2019 Sebastián Ramírez
+
+* Package Info *
+
+Authors: Sebastián Ramírez <tiangolo@gmail.com>
+Package Manager: Pip
+Project URL: https://pypi.org/project/typer/
+Package Download URL: https://files.pythonhosted.org/packages/d0/3e/2b3a69a50fa8237e6c9c76ff08eeffcf7caad7e24e01d3762780544d8f9b/typer-0.12.0.tar.gz
+Dependency Path: typer
+
+--------------------------------------------------------------------------------
+Package Title: use-sync-external-store (1.6.0)
+
+Package Locator: npm+use-sync-external-store$1.6.0
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+Backwards compatible shim for React's useSyncExternalStore. Works with any React that supports hooks.
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- cjs/use-sync-external-store-shim.development.js
+  - Copyright (c)  Meta Platforms, Inc. and affiliates.
+- cjs/use-sync-external-store-shim.native.development.js
+  - Copyright (c)  Meta Platforms, Inc. and affiliates.
+- cjs/use-sync-external-store-shim.native.production.js
+  - Copyright (c)  Meta Platforms, Inc. and affiliates.
+- cjs/use-sync-external-store-shim.production.js
+  - Copyright (c)  Meta Platforms, Inc. and affiliates.
+- cjs/use-sync-external-store-shim/with-selector.development.js
+  - Copyright (c)  Meta Platforms, Inc. and affiliates.
+- cjs/use-sync-external-store-shim/with-selector.production.js
+  - Copyright (c)  Meta Platforms, Inc. and affiliates.
+- cjs/use-sync-external-store-with-selector.development.js
+  - Copyright (c)  Meta Platforms, Inc. and affiliates.
+- cjs/use-sync-external-store-with-selector.production.js
+  - Copyright (c)  Meta Platforms, Inc. and affiliates.
+- cjs/use-sync-external-store.development.js
+  - Copyright (c)  Meta Platforms, Inc. and affiliates.
+- cjs/use-sync-external-store.production.js
+  - Copyright (c)  Meta Platforms, Inc. and affiliates.
+- LICENSE
+  - Copyright (c)  Meta Platforms, Inc. and affiliates.
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c)  Meta Platforms, Inc. and affiliates.
+
+* Package Info *
+
+Authors: react-core@meta.com
+Package Manager: NPM
+Project URL: https://github.com/react/react#readme
+Package Download URL: https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.6.0.tgz
+Dependency Path: @xyflow/react > zustand > use-sync-external-store
+
+--------------------------------------------------------------------------------
+Package Title: uvicorn (0.30.0)
+
+Package Locator: pip+uvicorn$0.30.0
+
+Package Depth: Direct
+--------------------------------------------------------------------------------
+
+The lightning-fast ASGI server.
+
+* Other Licenses *
+BSD-3-Clause
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE.md
+  - Copyright (c) 2017 present, [Encode OSS Ltd](https://www.encode.io/).
+- uvicorn/_types.py
+  - Copyright (c)  Django Software Foundation and individual contributors.
+--------------------------------------------------------------------------------
+
+* Copyrights *
+BSD-3-Clause
+- Copyright (c) 2017 present, [Encode OSS Ltd](https://www.encode.io/).
+- Copyright (c)  Django Software Foundation and individual contributors.
+
+* Package Info *
+
+Authors: Tom Christie <tom@tomchristie.com>
+Package Manager: Pip
+Project URL: https://pypi.org/project/uvicorn/
+Package Download URL: https://files.pythonhosted.org/packages/d3/f7/4ad826703a49b320a4adf2470fdd2a3481ea13f4460cb615ad12c75be003/uvicorn-0.30.0.tar.gz
+Dependency Path: uvicorn
+
+--------------------------------------------------------------------------------
+Package Title: zustand (4.5.7)
+
+Package Locator: npm+zustand$4.5.7
+
+Package Depth: Transitive
+--------------------------------------------------------------------------------
+
+🐻 Bear necessities for state management in React
+
+* Declared Licenses *
+MIT
+--------------------------------------------------------------------------------
+File matches:
+- LICENSE
+  - Copyright (c) 2019 Paul Henschel
+- package.json
+--------------------------------------------------------------------------------
+
+* Copyrights *
+MIT
+- Copyright (c) 2019 Paul Henschel
+
+* Package Info *
+
+Authors: daishi@axlight.com, drcmda@gmail.com, holcomb227@gmail.com
+Package Manager: NPM
+Project URL: https://github.com/pmndrs/zustand
+Package Download URL: https://registry.npmjs.org/zustand/-/zustand-4.5.7.tgz
+Dependency Path: @xyflow/react > zustand
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+Report Generated by FOSSA on 2026-10-7
