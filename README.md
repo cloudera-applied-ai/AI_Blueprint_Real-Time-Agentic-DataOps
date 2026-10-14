@@ -3,6 +3,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue.svg)](pyproject.toml)
 [![Cloudera Blueprint](https://img.shields.io/badge/Cloudera-Blueprint-f96702.svg)](METADATA.yaml)
+[![Author-Ian Brooks](https://img.shields.io/badge/Author-Ian%20Brooks-555555)]()
 [![Stars](https://img.shields.io/github/stars/cloudera-applied-ai/AI_Blueprint_Real-Time-Agentic-DataOps?logo=github&cacheSeconds=300)](https://github.com/cloudera-applied-ai/AI_Blueprint_Real-Time-Agentic-DataOps/stargazers)
 [![Forks](https://img.shields.io/github/forks/cloudera-applied-ai/AI_Blueprint_Real-Time-Agentic-DataOps?logo=github&cacheSeconds=300)](https://github.com/cloudera-applied-ai/AI_Blueprint_Real-Time-Agentic-DataOps/network/members)
 
